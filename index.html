@@ -278,7 +278,7 @@ html{scroll-behavior:smooth}
   <ul class="list">
     <li>Разъяснить адвокату статью, суть нарушения, факт разъяснения прав и проведённые обыски.</li>
     <li>По требованию предоставить <b>видеофиксацию</b> задержания (ст. 2.4 п.2).</li>
-    <li>Конфиденциальный разговор с клиентом до прибытия или <b>10 мин</b> (ст. 2.2.1).</li>
+    <li>Конфиденциальный разговор с адвокатом — право задержанного; отдельного лимита времени в ПК не установлено.</li>
     <li>О мотивах преступления отвечать не обязан, это устанавливает суд.</li>
   </ul>
 </section>
@@ -299,13 +299,13 @@ html{scroll-behavior:smooth}
     <li><b>Допрос</b>, не более 60 мин, при необходимости.</li>
     <li><b>Вторичный обыск</b> перед арестом.</li>
   </ol>
-  <div class="warnbox">Задержан ГИБДД или военной полицией и не передан уполномоченному в течение <b>30 мин</b> — освободить (ст. 2.5 ПК).</div>
+  <div class="warnbox">Задержан ГИБДД, ФСО или военной полицией и не передан уполномоченному сотруднику в течение <b>30 мин</b> — освободить (ст. 2.2 ПК, примечание к п.9).</div>
   <h3>Тайминги</h3>
   <div class="grid">
     <div class="card"><h4>Задержание</h4><p>до <b>60 мин</b> (ст. 2.2.3)</p></div>
     <div class="card"><h4>Адвокат</h4><p>ответ <b>3 мин</b>, приезд <b>7 мин</b></p></div>
     <div class="card"><h4>Звонок</h4><p><b>3 мин</b>, вызов частного адвоката</p></div>
-    <div class="card"><h4>Беседа с адвокатом</h4><p>до <b>10 мин</b> (ст. 2.2.1)</p></div>
+    <div class="card"><h4>Приостановка СК</h4><p>до <b>20 мин</b> на проверку видео (ст. 2.2.4)</p></div>
     <div class="card"><h4>Прокурор (госслужащие)</h4><p>ответ <b>3 мин</b>, приезд <b>10 мин</b></p></div>
     <div class="card"><h4>Видео</h4><p><b>48 ч</b> (ООС 7.4) / до <b>72 ч</b> (ст. 2.4)</p></div>
   </div>
@@ -464,21 +464,29 @@ html{scroll-behavior:smooth}
       <tr class="grouprow"><td colspan="5">УК · Собственность</td></tr>
       <tr class="srow" data-cat="uk" data-cls="s"><td class="code">УК 10.1</td><td class="desc">Мошенничество, хищение обманом</td><td><span class="rk s">С</span></td><td class="rst">2★</td><td class="rsanc">до 60к / до 30 мес</td></tr>
       <tr class="srow" data-cat="uk" data-cls="t"><td class="code">УК 10.2</td><td class="desc">Грабёж, открытое хищение</td><td><span class="rk t">Т</span></td><td class="rst">3★</td><td class="rsanc">до 40 мес ЛС</td></tr>
-      <tr class="srow" data-cat="uk" data-cls="t"><td class="code">УК 10.3</td><td class="desc">Неправомерное завладение ТС (угон)</td><td><span class="rk t">Т</span></td><td class="rst">2★</td><td class="rsanc">до 75к / до 40 мес</td></tr>
-      <tr class="srow" data-cat="uk" data-cls="t"><td class="code">УК 10.4</td><td class="desc">Умышленное уничтожение чужого имущества</td><td><span class="rk t">Т</span></td><td class="rst">2★</td><td class="rsanc">до 100к / до 40 мес</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="s"><td class="code">УК 10.3 ч.1</td><td class="desc">Неправомерное завладение ТС, поездка на нём (угон)</td><td><span class="rk s">С</span></td><td class="rst">2★</td><td class="rsanc">до 50к / до 30 мес</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="t"><td class="code">УК 10.3 ч.2</td><td class="desc">То же с гос. ТС лицом, не трудоустроенным в этой структуре</td><td><span class="rk t">Т</span></td><td class="rst">2★</td><td class="rsanc">до 75к / до 40 мес</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="n"><td class="code">УК 10.4 ч.1</td><td class="desc">Умышленное уничтожение/повреждение чужого имущества (значит. ущерб)</td><td><span class="rk n">Н</span></td><td class="rst">1★</td><td class="rsanc">до 50к / до 20 мес</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="t"><td class="code">УК 10.4 ч.2</td><td class="desc">То же в отношении государственного имущества</td><td><span class="rk t">Т</span></td><td class="rst">2★</td><td class="rsanc">до 100к / до 40 мес</td></tr>
       <tr class="grouprow"><td colspan="5">УК · Оружие, наркотики, безопасность</td></tr>
       <tr class="srow" data-cat="uk" data-cls="t"><td class="code">УК 12.1</td><td class="desc">Оборот средств радиоэлектронного подавления (глушилки)</td><td><span class="rk t">Т</span></td><td class="rst">3★</td><td class="rsanc">30–40к / до 40 мес</td></tr>
       <tr class="srow" data-cat="uk" data-cls="t"><td class="code">УК 12.3</td><td class="desc">Бандитизм</td><td><span class="rk t">Т</span></td><td class="rst">3★</td><td class="rsanc">25–35к / до 40 мес</td></tr>
       <tr class="srow" data-cat="uk" data-cls="s"><td class="code">УК 12.4</td><td class="desc">Хулиганство</td><td><span class="rk s">С</span></td><td class="rst">2★</td><td class="rsanc">до 50к / до 30 мес</td></tr>
       <tr class="srow" data-cat="uk" data-cls="ot"><td class="code">УК 12.5</td><td class="desc">Массовые беспорядки</td><td><span class="rk ot">ОТ</span></td><td class="rst">4★</td><td class="rsanc">до 50 мес ЛС</td></tr>
       <tr class="srow" data-cat="uk" data-cls="s"><td class="code">УК 12.6</td><td class="desc">Нарушение порядка проведения митингов</td><td><span class="rk s">С</span></td><td class="rst">2★</td><td class="rsanc">до 30 мес ЛС</td></tr>
-      <tr class="srow" data-cat="uk" data-cls="ot"><td class="code">УК 12.7</td><td class="desc">Незаконное проникновение на закрытые/режимные объекты</td><td><span class="rk ot">ОТ</span></td><td class="rst">2★</td><td class="rsanc">до 75к / до 50 мес</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="s"><td class="code">УК 12.7 ч.1</td><td class="desc">Незаконное проникновение на закрытую территорию</td><td><span class="rk s">С</span></td><td class="rst">2★</td><td class="rsanc">до 35к / до 30 мес</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="t"><td class="code">УК 12.7 ч.2</td><td class="desc">То же на режимную территорию</td><td><span class="rk t">Т</span></td><td class="rst">2★</td><td class="rsanc">до 65к / до 40 мес</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="ot"><td class="code">УК 12.7 ч.3</td><td class="desc">То же, совершённое должностным лицом</td><td><span class="rk ot">ОТ</span></td><td class="rst">2★</td><td class="rsanc">до 75к / до 50 мес</td></tr>
       <tr class="srow" data-cat="uk" data-cls="ot"><td class="code">УК 12.8</td><td class="desc">Незаконный оборот оружия и спецсредств</td><td><span class="rk ot">ОТ</span></td><td class="rst">3–4★</td><td class="rsanc">20–80к / до 50 мес</td></tr>
-      <tr class="srow" data-cat="uk" data-cls="t"><td class="code">УК 13.1</td><td class="desc">Наркотики: хранение, сбыт, производство</td><td><span class="rk t">Т</span></td><td class="rst">2★</td><td class="rsanc">до 80к / до 40 мес</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="s"><td class="code">УК 13.1 ч.1</td><td class="desc">Наркотики: хранение/приобретение/перевозка, значит. размер (свыше 3г)</td><td><span class="rk s">С</span></td><td class="rst">2★</td><td class="rsanc">до 60к / до 30 мес</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="t"><td class="code">УК 13.1 ч.2</td><td class="desc">То же, особо крупный размер (свыше 20г)</td><td><span class="rk t">Т</span></td><td class="rst">3★</td><td class="rsanc">до 80к / до 40 мес</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="t"><td class="code">УК 13.1 ч.3</td><td class="desc">Кустарное производство (удобрение/полив/рассада с наркосодержащими)</td><td><span class="rk t">Т</span></td><td class="rst">3★</td><td class="rsanc">до 70к / до 40 мес</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="ot"><td class="code">УК 13.1 ч.4</td><td class="desc">То же, совершённое должностным лицом (кроме ФСБ-2 упр./УБОП/ГНК при исполнении)</td><td><span class="rk ot">ОТ</span></td><td class="rst">3★</td><td class="rsanc">до 50 мес ЛС</td></tr>
       <tr class="grouprow"><td colspan="5">УК · Власть, должностные</td></tr>
       <tr class="srow" data-cat="uk" data-cls="s"><td class="code">УК 14.1</td><td class="desc">Разглашение государственной тайны</td><td><span class="rk s">С</span></td><td class="rst">2★</td><td class="rsanc">до 30 мес ЛС</td></tr>
       <tr class="srow" data-cat="uk" data-cls="ot"><td class="code">УК 15.1</td><td class="desc">Превышение должностных полномочий</td><td><span class="rk ot">ОТ</span></td><td class="rst">4★</td><td class="rsanc">до 65к / до 50 мес</td></tr>
-      <tr class="srow" data-cat="uk" data-cls="ot"><td class="code">УК 15.1.1</td><td class="desc">Злоупотребление должностными полномочиями</td><td><span class="rk ot">ОТ</span></td><td class="rst">3★</td><td class="rsanc">до 50к / до 50 мес</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="t"><td class="code">УК 15.1.1 ч.1</td><td class="desc">Злоупотребление должностными полномочиями</td><td><span class="rk t">Т</span></td><td class="rst">3★</td><td class="rsanc">до 50к / до 40 мес</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="ot"><td class="code">УК 15.1.1 ч.2</td><td class="desc">То же, повлёкшее тяжкие последствия</td><td><span class="rk ot">ОТ</span></td><td class="rst">3★</td><td class="rsanc">до 50 мес ЛС</td></tr>
       <tr class="srow" data-cat="uk" data-cls="t"><td class="code">УК 15.2</td><td class="desc">Нецелевое расходование бюджетных средств</td><td><span class="rk t">Т</span></td><td class="rst">3★</td><td class="rsanc">40–70к / до 40 мес</td></tr>
       <tr class="srow" data-cat="uk" data-cls="t"><td class="code">УК 15.3</td><td class="desc">Неисполнение приказа сотрудником ОВД</td><td><span class="rk t">Т</span></td><td class="rst">3★</td><td class="rsanc">20–40к / до 40 мес</td></tr>
       <tr class="srow" data-cat="uk" data-cls="t"><td class="code">УК 15.4</td><td class="desc">Получение взятки</td><td><span class="rk t">Т</span></td><td class="rst">4★</td><td class="rsanc">50–100к / до 40 мес</td></tr>
@@ -505,7 +513,8 @@ html{scroll-behavior:smooth}
       <tr class="srow" data-cat="uk" data-cls="s"><td class="code">УК 17.5</td><td class="desc">Самоуправство</td><td><span class="rk s">С</span></td><td class="rst">2★</td><td class="rsanc">до 35к / до 30 мес</td></tr>
       <tr class="srow" data-cat="uk" data-cls="s"><td class="code">УК 17.6</td><td class="desc">Неповиновение законному распоряжению или требованию</td><td><span class="rk s">С</span></td><td class="rst">2★</td><td class="rsanc">до 35к / до 30 мес</td></tr>
       <tr class="srow" data-cat="uk" data-cls="s"><td class="code">УК 17.7</td><td class="desc">Отказ от оплаты штрафа (уголовный)</td><td><span class="rk s">С</span></td><td class="rst">2★</td><td class="rsanc">2× штрафа / до 30 мес</td></tr>
-      <tr class="srow" data-cat="uk" data-cls="ot"><td class="code">УК 17.8</td><td class="desc">Незаконная помеха при задержании или аресте</td><td><span class="rk ot">ОТ</span></td><td class="rst">3★</td><td class="rsanc">до 100к / до 50 мес</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="t"><td class="code">УК 17.8 ч.1</td><td class="desc">Незаконная помеха при задержании или аресте</td><td><span class="rk t">Т</span></td><td class="rst">3★</td><td class="rsanc">до 70к / до 40 мес</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="ot"><td class="code">УК 17.8 ч.2</td><td class="desc">То же, совершённое сотрудником гос. структуры</td><td><span class="rk ot">ОТ</span></td><td class="rst">3★</td><td class="rsanc">до 100к / до 50 мес</td></tr>
       <tr class="grouprow"><td colspan="5">УК · Прочее (воинские, права, эконом)</td></tr>
       <tr class="srow" data-cat="uk" data-cls="t"><td class="code">УК 8.4</td><td class="desc">Дезертирство</td><td><span class="rk t">Т</span></td><td class="rst">3★</td><td class="rsanc">до 40 мес ЛС</td></tr>
       <tr class="srow" data-cat="uk" data-cls="s"><td class="code">УК 8.3</td><td class="desc">Самовольное оставление части или места службы</td><td><span class="rk s">С</span></td><td class="rst">2★</td><td class="rsanc">до 30 мес ЛС</td></tr>
@@ -518,7 +527,7 @@ html{scroll-behavior:smooth}
       <tr class="srow" data-cat="koap" data-cls="adm"><td class="code">КоАП 5.2</td><td class="desc">Курение в неположенном месте</td><td><span class="rk adm">адм</span></td><td class="rst">—</td><td class="rsanc">до 5 000</td></tr>
       <tr class="srow" data-cat="koap" data-cls="adm"><td class="code">КоАП 5.3</td><td class="desc">Нецензурная лексика в общественном месте</td><td><span class="rk adm">адм</span></td><td class="rst">—</td><td class="rsanc">до 5 000</td></tr>
       <tr class="srow" data-cat="koap" data-cls="adm"><td class="code">КоАП 5.4</td><td class="desc">Распитие алкоголя или появление в пьяном виде</td><td><span class="rk adm">адм</span></td><td class="rst">—</td><td class="rsanc">до 5 000</td></tr>
-      <tr class="srow" data-cat="koap" data-cls="adm"><td class="code">КоАП 5.5</td><td class="desc">Громкие выкрики или музыка в ночное время</td><td><span class="rk adm">адм</span></td><td class="rst">—</td><td class="rsanc">до 5 000</td></tr>
+      <tr class="srow" data-cat="koap" data-cls="adm"><td class="code">КоАП 5.5</td><td class="desc">Громкие выкрики или музыка в ночное время</td><td><span class="rk adm">адм</span></td><td class="rst">—</td><td class="rsanc">до 10 000</td></tr>
       <tr class="srow" data-cat="koap" data-cls="adm"><td class="code">КоАП 5.6</td><td class="desc">Мелкое хулиганство, приставание к гражданам</td><td><span class="rk adm">адм</span></td><td class="rst">—</td><td class="rsanc">до 5 000</td></tr>
       <tr class="srow" data-cat="koap" data-cls="adm"><td class="code">КоАП 5.7</td><td class="desc">Неуважение к государственному служащему</td><td><span class="rk adm">адм</span></td><td class="rst">—</td><td class="rsanc">до 10 000</td></tr>
       <tr class="srow" data-cat="koap" data-cls="adm"><td class="code">КоАП 5.8</td><td class="desc">Нарушение правил ношения холодного оружия</td><td><span class="rk adm">адм</span></td><td class="rst">—</td><td class="rsanc">до 10 000</td></tr>
@@ -763,10 +772,10 @@ html{scroll-behavior:smooth}
 
   var FAV=[
     ['УК 17.6','Неповиновение'],['УК 17.3','Оскорбление власти'],['УК 17.2','Насилие к власти'],
-    ['УК 17.8','Помеха задержанию'],['УК 17.7','Отказ от штрафа'],['УК 17.1','Покушение на сотрудника'],
-    ['УК 10.2','Грабёж'],['УК 10.3','Угон ТС'],['УК 10.1','Мошенничество'],['УК 10.4','Порча имущества'],
+    ['УК 17.8 ч.1','Помеха задержанию'],['УК 17.7','Отказ от штрафа'],['УК 17.1','Покушение на сотрудника'],
+    ['УК 10.2','Грабёж'],['УК 10.3 ч.1','Угон ТС'],['УК 10.1','Мошенничество'],['УК 10.4 ч.1','Порча имущества'],
     ['УК 6.4','Тяжкий вред'],['УК 6.7','Угроза убийством'],['УК 6.1','Убийство'],['УК 7.1','Похищение'],
-    ['УК 12.8','Оружие'],['УК 13.1','Наркотики'],['УК 12.4','Хулиганство (УК)'],
+    ['УК 12.8','Оружие'],['УК 13.1 ч.1','Наркотики'],['УК 12.4','Хулиганство (УК)'],
     ['КоАП 5.1','Оскорбление'],['КоАП 5.4','Распитие / пьяный'],['КоАП 5.6','Мелкое хулиганство'],['КоАП 5.8','Холодное оружие'],
     ['КоАП 23.1.4','Пьяный за рулём'],['КоАП 24.5','Скорость 80+'],['КоАП 15.1','Встречка'],['КоАП 11.8','Без документов']
   ];
