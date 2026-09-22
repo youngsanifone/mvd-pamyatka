@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Памятка МВД Арбатский</title>
+<meta name="description" content="Полевая памятка сотрудника МВД РО: сборка речи задержания, Миранда, порядок, сила, залог, полный поиск по УК и КоАП">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=PT+Sans:wght@0,400;0,700&family=PT+Mono&display=swap">
+<style>
+:root{
+  --bg:#100b0b; --surface:#191211; --surface-2:#211817; --surface-3:#2b201f;
+  --ink:#f2e8e6; --ink-soft:#bfaeab; --ink-faint:#8c7a78;
+  --line:#2e2221; --line-strong:#463231;
+  --accent:#c93a32; --accent-2:#e6584e; --accent-soft:#2c1614;
+  --gold:#e0a94a; --gold-soft:#2a2011;
+  --good:#4bbd84; --good-soft:#12241b;
+  --warn:#e0a94a; --warn-soft:#2a2011;
+  --crit:#e2685c; --crit-soft:#2c1512;
+  --blue:#6f9ada;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px rgba(0,0,0,.5);
+  --radius:11px;
+}
+:root[data-theme="light"]{
+  --bg:#f1ecec; --surface:#fff; --surface-2:#f7f1f0; --surface-3:#efe4e3;
+  --ink:#241818; --ink-soft:#5f4c4b; --ink-faint:#8a7573;
+  --line:#e3d6d5; --line-strong:#ccb9b7;
+  --accent:#a82a23; --accent-2:#c93a32; --accent-soft:#f7e4e2;
+  --gold:#9c7614; --gold-soft:#f4edd9;
+  --good:#1c7048; --good-soft:#e0f0e7;
+  --warn:#a76a10; --warn-soft:#f7ecd7;
+  --crit:#a52218; --crit-soft:#f6e2df;
+  --blue:#2a5296;
+  --shadow:0 1px 2px rgba(60,20,20,.06),0 6px 20px rgba(60,20,20,.08);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"PT Sans",system-ui,sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1000px;margin:0 auto;padding-inline:15px}
+
+header.top{background:linear-gradient(160deg,#2a1210,#4a1c18);color:#fff;border-bottom:3px solid var(--accent)}
+.top .wrap{padding-block:20px 18px}
+.crest{display:inline-flex;gap:8px;align-items:center;font-family:"Oswald",sans-serif;font-weight:600;letter-spacing:.15em;text-transform:uppercase;font-size:11px;color:#f3cdc9;margin-bottom:7px}
+.crest .st{color:var(--gold);filter:brightness(1.3)}
+h1{font-family:"Oswald",sans-serif;font-weight:700;font-size:clamp(23px,5vw,34px);margin:0;color:#fff;letter-spacing:.01em}
+.top p{margin:7px 0 0;color:#eccfcb;font-size:14px}
+.idbadge{margin-top:9px;display:inline-block;background:rgba(0,0,0,.28);border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:6px 11px;font-size:13px;color:#f3cdc9}
+.idbadge b{color:#fff}
+
+.searchbar{position:sticky;top:0;z-index:30;background:var(--bg);padding-block:11px 9px;border-bottom:1px solid var(--line)}
+.searchbar .wrap{display:flex;flex-direction:column;gap:8px}
+.brand{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+.brand .bt{font-family:"Oswald",sans-serif;font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-size:13px;color:var(--accent-2)}
+.brand .bt .st{color:var(--gold)}
+.brand .bid{font-family:"PT Mono",monospace;font-size:12px;color:var(--ink-faint)}
+#q{width:100%;font-size:16px;font-family:"PT Sans",sans-serif;padding:12px 15px 12px 42px;border-radius:10px;
+  border:1.5px solid var(--line-strong);background:var(--surface) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238c7a78' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='M21 21l-4-4'/%3E%3C/svg%3E") no-repeat 13px center/18px;color:var(--ink)}
+#q:focus{outline:none;border-color:var(--accent)}
+.chips{display:flex;flex-wrap:wrap;gap:7px}
+.chip{font-family:"Oswald",sans-serif;font-size:12.5px;letter-spacing:.03em;text-transform:uppercase;
+  padding:6px 12px;border-radius:999px;border:1px solid var(--line-strong);background:var(--surface);
+  color:var(--ink-soft);cursor:pointer;user-select:none}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+.count{font-size:12.5px;color:var(--ink-faint);align-self:center;margin-left:auto;font-variant-numeric:tabular-nums}
+.secnav{display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:2px;scrollbar-width:thin}
+.secnav::-webkit-scrollbar{height:5px}
+.secnav::-webkit-scrollbar-thumb{background:var(--line-strong);border-radius:3px}
+.secnav{border-bottom:1px solid var(--line-strong)}
+.secnav a{flex:0 0 auto;font-family:"Oswald",sans-serif;font-size:13px;letter-spacing:.03em;text-transform:uppercase;text-decoration:none;padding:10px 13px;background:transparent;border:0;border-bottom:2px solid transparent;color:var(--ink-soft);white-space:nowrap;margin-bottom:-1px}
+.secnav a:hover{color:var(--accent-2)}
+.secnav a.active{color:var(--accent-2);border-bottom-color:var(--accent);font-weight:700}
+.results{background:var(--surface);border:1px solid var(--line-strong);border-radius:10px;max-height:48vh;overflow:auto;box-shadow:var(--shadow)}
+.rhead{padding:8px 13px;font-family:"Oswald",sans-serif;font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-faint);border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--surface-3);z-index:1}
+.ritem{display:grid;grid-template-columns:104px 1fr 42px;gap:3px 10px;padding:9px 13px;border-bottom:1px solid var(--line);cursor:pointer;align-items:baseline}
+.ritem:last-child{border-bottom:0}
+.ritem:hover{background:var(--accent-soft)}
+.ritem.sel{background:var(--accent-soft);box-shadow:inset 3px 0 0 var(--accent)}
+.ritem .rc{font-family:"PT Mono",monospace;color:var(--accent-2);font-weight:700;white-space:nowrap;font-size:12.5px}
+.ritem.sel .rc::before{content:"✓ ";color:var(--good)}
+.ritem .rd{font-size:14px;line-height:1.35}
+.ritem .rk{font-family:"Oswald",sans-serif;font-size:12px;text-align:right;white-space:nowrap}
+.ritem .rsn{grid-column:1/-1;padding-left:104px;font-family:"PT Mono",monospace;font-size:11.5px;color:var(--ink-soft)}
+@media (max-width:560px){.ritem{grid-template-columns:86px 1fr 38px}.ritem .rsn{padding-left:86px}}
+
+main{padding-block:8px 60px}
+section{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:18px 18px 20px;margin:16px 0;box-shadow:var(--shadow);scroll-margin-top:172px}
+section.panel{display:none}
+section.panel.active{display:block}
+h2{font-family:"Oswald",sans-serif;font-weight:600;font-size:19px;margin:0 0 12px;letter-spacing:.01em;display:flex;gap:9px;align-items:baseline;flex-wrap:wrap}
+h2 .n{font-family:"PT Mono",monospace;font-size:12px;color:var(--accent-2);background:var(--accent-soft);border-radius:5px;padding:2px 7px;font-weight:400}
+h3{font-family:"Oswald",sans-serif;text-transform:uppercase;letter-spacing:.03em;font-size:13.5px;color:var(--accent-2);margin:18px 0 8px;border-bottom:1px solid var(--line);padding-bottom:5px}
+
+#rech{border:2px solid var(--accent);box-shadow:0 2px 4px rgba(0,0,0,.2),0 10px 28px rgba(201,58,50,.16)}
+.favwrap{margin-bottom:12px}
+.favlbl{font-family:"Oswald",sans-serif;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:6px}
+.fav{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+.favbtn{font-family:"PT Sans",sans-serif;font-size:15px;padding:13px 12px;border-radius:10px;border:1px solid var(--line-strong);background:var(--surface-2);color:var(--ink);cursor:pointer;user-select:none;display:flex;flex-direction:column;gap:3px;text-align:left;min-height:56px;justify-content:center}
+.favbtn b{font-family:"PT Mono",monospace;font-size:11px;color:var(--accent-2);font-weight:700}
+.favbtn:hover{border-color:var(--accent)}
+.favbtn.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.favbtn.on b{color:#fff}
+.btn.big{font-size:15px;padding:14px 20px;flex:1}
+.picked{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:11px}
+.picked:empty{display:none}
+.pchip{display:inline-flex;gap:7px;align-items:center;font-family:"PT Mono",monospace;font-size:12.5px;background:var(--accent);color:#fff;border-radius:7px;padding:5px 9px;cursor:pointer;user-select:none}
+.pchip .x{opacity:.8;font-family:"PT Sans",sans-serif}
+.pchip:hover{background:var(--accent-2)}
+.speechtext{font-size:16.5px;line-height:1.68;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:15px 16px;white-space:pre-wrap}
+.speechtext .empty{color:var(--ink-faint);font-size:14.5px;line-height:1.5}
+.rowbtns{display:flex;gap:9px;margin-top:12px;flex-wrap:wrap}
+.btn{font-family:"Oswald",sans-serif;font-size:12.5px;letter-spacing:.04em;text-transform:uppercase;cursor:pointer;border-radius:8px;padding:9px 15px;border:1px solid var(--line-strong);background:var(--surface);color:var(--ink-soft)}
+.btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+.btn.primary:hover{background:var(--accent-2)}
+
+.miranda{border-left:4px solid var(--gold);background:var(--gold-soft);border-radius:0 10px 10px 0;padding:15px 16px}
+.miranda .lbl{font-family:"Oswald",sans-serif;text-transform:uppercase;letter-spacing:.05em;font-size:12px;color:var(--ink-soft);margin-bottom:7px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.miranda p{margin:0;font-size:16px;line-height:1.65}
+.copy{font-family:"Oswald",sans-serif;font-size:11px;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;background:var(--accent);color:#fff;border:0;border-radius:6px;padding:5px 10px}
+.copy:hover{background:var(--accent-2)}
+.hint{font-size:13px;color:var(--ink-faint);margin-top:9px}
+
+ol.steps{list-style:none;margin:0;padding:0;counter-reset:s}
+ol.steps>li{counter-increment:s;position:relative;padding:7px 0 7px 40px;border-bottom:1px solid var(--line);font-size:14.5px}
+ol.steps>li:last-child{border-bottom:0}
+ol.steps>li::before{content:counter(s);position:absolute;left:0;top:6px;width:26px;height:26px;border-radius:7px;background:var(--accent);color:#fff;font-family:"Oswald",sans-serif;font-size:13px;display:grid;place-items:center}
+ol.steps>li b{color:var(--ink)}
+
+.grid{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(160px,1fr))}
+.card{background:var(--surface-2);border:1px solid var(--line);border-radius:9px;padding:12px 13px}
+.card h4{font-family:"Oswald",sans-serif;font-size:13px;margin:0 0 5px;color:var(--ink);text-transform:uppercase;letter-spacing:.02em}
+.card p{margin:0;font-size:13.5px;color:var(--ink-soft)}
+.card b{color:var(--ink)}
+.list{margin:0;padding-left:18px;font-size:14px}
+.list li{margin-bottom:6px}
+.list b{color:var(--ink)}
+.list code{font-family:"PT Mono",monospace;font-size:12.5px;background:var(--surface-3);border:1px solid var(--line);border-radius:5px;padding:1px 6px;color:var(--accent-2);white-space:nowrap}
+.bail{display:grid;grid-template-columns:repeat(auto-fit,minmax(90px,1fr));gap:8px;margin:4px 0 10px}
+.bail div{background:var(--surface-2);border:1px solid var(--line);border-radius:8px;padding:9px;text-align:center}
+.bail .s{font-family:"Oswald",sans-serif;color:var(--gold);font-size:15px}
+.bail .v{font-family:"PT Mono",monospace;font-size:13px;color:var(--ink);margin-top:2px}
+.warnbox{border-left:4px solid var(--crit);background:var(--crit-soft);border-radius:0 9px 9px 0;padding:11px 13px;font-size:13.5px;margin-top:10px}
+.warnbox b{color:var(--crit)}
+
+.catjump{display:flex;flex-wrap:wrap;gap:6px;margin:2px 0 10px}
+.catjump button{font-family:"Oswald",sans-serif;font-size:12px;letter-spacing:.02em;text-transform:uppercase;padding:6px 11px;border-radius:999px;border:1px solid var(--line-strong);background:var(--surface-2);color:var(--ink-soft);cursor:pointer}
+.catjump button:hover{border-color:var(--accent);color:var(--accent-2)}
+.toolbar{display:flex;gap:9px;margin:2px 0 8px;flex-wrap:wrap}
+.grp{margin-top:10px}
+.grp.flash .grphead{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent-soft)}
+.grphead{width:100%;display:flex;align-items:center;gap:11px;background:var(--surface-2);border:1px solid var(--line-strong);border-radius:9px;padding:11px 14px;cursor:pointer;font-family:"Oswald",sans-serif;font-size:14px;text-transform:uppercase;letter-spacing:.02em;color:var(--ink);text-align:left}
+.grphead:hover{border-color:var(--accent)}
+.grphead .gi{font-family:"PT Mono",monospace;font-size:20px;line-height:1;width:16px;color:var(--accent);font-weight:700;flex:0 0 auto}
+.grphead .gi::before{content:"−"}
+.grp.collapsed .grphead .gi::before{content:"+"}
+.grphead .gt{flex:1}
+.grphead .gc{font-family:"PT Mono",monospace;font-size:12px;color:var(--ink-faint);background:var(--surface-3);border-radius:6px;padding:2px 8px;flex:0 0 auto}
+.grpbody{border:1px solid var(--line);border-top:0;border-radius:0 0 9px 9px;overflow:hidden}
+.grp.collapsed .grphead{border-radius:9px}
+.grp.collapsed .grpbody{display:none}
+.grp.ghidden{display:none}
+.leg{font-size:12.5px;color:var(--ink-faint);margin:2px 0 9px;line-height:1.75}
+.leg b{color:var(--ink)}
+.leg .rk{font-family:"Oswald",sans-serif;font-weight:700;font-size:12px}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;margin-top:4px}
+table.stbl{border-collapse:collapse;width:100%;font-size:13.5px}
+.stbl thead th{text-align:left;background:var(--surface-3);font-family:"Oswald",sans-serif;font-weight:600;font-size:11px;letter-spacing:.03em;text-transform:uppercase;color:var(--ink-soft);padding:8px 12px;border-bottom:1px solid var(--line-strong)}
+.stbl td{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:baseline}
+tr.srow{cursor:pointer}
+tr.srow:hover td{background:var(--accent-soft)}
+tr.srow.sel td{background:var(--accent-soft)}
+tr.srow.sel td.code{color:var(--accent)}
+tr.srow.sel td.code::before{content:"✓ "}
+.stbl td.code{font-family:"PT Mono",monospace;white-space:nowrap;color:var(--accent-2);font-weight:700}
+.stbl td.desc{line-height:1.35}
+.stbl td.rsanc{font-family:"PT Mono",monospace;font-size:12px;color:var(--ink-soft);white-space:nowrap}
+.stbl td.rst{font-family:"PT Mono",monospace;font-size:12.5px;color:var(--gold);white-space:nowrap;font-weight:700}
+.stbl td .rk{font-family:"Oswald",sans-serif;font-size:12px;white-space:nowrap;font-weight:700}
+.rk.n{color:var(--ink-faint)} .rk.s{color:var(--blue)} .rk.t{color:var(--warn)} .rk.ot{color:var(--crit)} .rk.adm{color:var(--ink-faint)}
+tr.grouprow td{background:var(--surface-2);font-family:"Oswald",sans-serif;text-transform:uppercase;letter-spacing:.03em;font-size:12px;color:var(--accent-2);font-weight:600;border-bottom:1px solid var(--line-strong)}
+tr.rhidden{display:none}
+mark{background:var(--gold);color:#1a1a1a;border-radius:2px;padding:0 1px}
+.noresult{padding:16px;text-align:center;color:var(--ink-faint);font-size:14px}
+@media (max-width:560px){
+  .stbl td.rsanc{white-space:normal}
+  section{scroll-margin-top:236px}
+}
+
+.selbar{display:none;gap:8px;align-items:center;flex-wrap:wrap;padding-top:2px}
+.selbar.on{display:flex}
+.selbar .sb-count{font-family:"Oswald",sans-serif;font-size:13px;letter-spacing:.03em;color:var(--accent-2);background:var(--accent-soft);border:1px solid var(--line-strong);border-radius:8px;padding:6px 11px}
+.selbar .btn{padding:8px 14px}
+
+footer{color:var(--ink-faint);font-size:12.5px;padding-block:18px 90px;text-align:center}
+.themebtn{position:fixed;left:13px;bottom:13px;z-index:46;background:var(--surface);border:1px solid var(--line-strong);color:var(--ink-soft);border-radius:999px;padding:8px 13px;font-family:"Oswald",sans-serif;font-size:11px;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;box-shadow:var(--shadow)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="searchbar">
+  <div class="wrap">
+    <div class="brand"><span class="bt">★ МВД · Арбатский</span><span class="bid">Одесский · 87436 · ОМОН</span></div>
+    <input id="q" type="search" placeholder="Поиск: 6.1, грабёж, взятка, скорость, оскорбление..." autocomplete="off" aria-label="Поиск по статьям">
+    <div class="chips" role="group" aria-label="Фильтр">
+      <span class="chip" data-f="all" aria-pressed="true">Все</span>
+      <span class="chip" data-f="uk" aria-pressed="false">УК</span>
+      <span class="chip" data-f="koap" aria-pressed="false">КоАП</span>
+      <span class="chip" data-f="road" aria-pressed="false">ПДД</span>
+      <span class="chip" data-f="heavy" aria-pressed="false">Тяжкие / ОТ</span>
+      <span class="count" id="count"></span>
+    </div>
+    <nav class="secnav" aria-label="Разделы">
+      <a href="#rech">Быстро</a>
+      <a href="#prava">Права</a>
+      <a href="#zaderzhanie">Задержание</a>
+      <a href="#sila">Сила</a>
+      <a href="#zalog">Залог</a>
+      <a href="#polnom">Полномочия</a>
+      <a href="#reglament">Регламенты</a>
+      <a href="#statyi">Статьи</a>
+    </nav>
+    <div class="results" id="results" hidden></div>
+    <div class="selbar" id="selbar">
+      <span class="sb-count" id="fbCount"></span>
+      <button class="btn primary" id="fbCopy" type="button">Копировать речь</button>
+      <button class="btn" id="fbClear" type="button">Очистить</button>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+<main>
+
+<section id="rech" class="panel">
+  <h2>Быстрое задержание <span class="n">жми нарушения</span></h2>
+  <div class="speechtext" id="speech"><span class="empty">Жми нужные нарушения ниже — здесь сам соберётся готовый текст: представление, причина задержания и разъяснение прав. Потом «Копировать речь».</span></div>
+  <div class="picked" id="picked"></div>
+  <div class="rowbtns">
+    <button class="btn primary big" id="copyS" type="button">Копировать речь</button>
+    <button class="btn" id="clearS" type="button">Очистить</button>
+  </div>
+  <div class="favlbl" style="margin-top:16px">Частые нарушения — тап добавляет в речь</div>
+  <div class="fav" id="fav"></div>
+  <p class="hint">Нужного нет в списке — вкладка «Статьи» или поиск сверху. Все статьи обязательно озвучиваются в голосовой чат (ООС п.1.8).</p>
+</section>
+
+<section id="prava" class="panel">
+  <h2>Права задержанного <span class="n">ст. 2.4 ПК</span></h2>
+  <div class="miranda">
+    <div class="lbl"><span>Зачитывается дважды при непонимании</span><button class="copy" id="copyM" type="button">Копировать</button></div>
+    <p id="mtext">Вы имеете право хранить молчание и не свидетельствовать против себя. Всё, что Вы сообщите, может быть использовано против Вас. Вы имеете право на частного или государственного адвоката, а также на один телефонный звонок. Вам понятны Ваши права?</p>
+  </div>
+  <p class="hint">При повторном перебивании повторно не зачитывается. Пропуск разъяснения прав это типовой провал на практике.</p>
+  <h3>Работа с адвокатом</h3>
+  <ul class="list">
+    <li>Разъяснить адвокату статью, суть нарушения, факт разъяснения прав и проведённые обыски.</li>
+    <li>По требованию предоставить <b>видеофиксацию</b> задержания (ст. 2.4 п.2).</li>
+    <li>Конфиденциальный разговор с клиентом до прибытия или <b>10 мин</b> (ст. 2.2.1).</li>
+    <li>О мотивах преступления отвечать не обязан, это устанавливает суд.</li>
+  </ul>
+</section>
+
+<section id="zaderzhanie" class="panel">
+  <h2>Порядок задержания <span class="n">ПК гл. 2</span></h2>
+  <ol class="steps">
+    <li><b>Наручники</b> (ст. 2.2 п.1).</li>
+    <li><b>Представиться</b>, если не очевидно.</li>
+    <li><b>Сообщить причину</b> задержания.</li>
+    <li><b>Разъяснить права</b> (Миранда).</li>
+    <li><b>Первичный досмотр</b>, оружие и запрещёнка.</li>
+    <li><b>Установить личность</b> по документам или базам.</li>
+    <li><b>Снять предметы</b>, мешающие идентификации.</li>
+    <li><b>Внести сведения</b> в гос. систему.</li>
+    <li><b>Доставить</b> в отделение МВД / ГИБДД / ФСБ.</li>
+    <li>Для <b>госслужащих</b>: вызов руководства и прокурора (ст. 2.2 п.11).</li>
+    <li><b>Допрос</b>, не более 60 мин, при необходимости.</li>
+    <li><b>Вторичный обыск</b> перед арестом.</li>
+  </ol>
+  <div class="warnbox">Задержан ГИБДД или военной полицией и не передан уполномоченному в течение <b>30 мин</b> — освободить (ст. 2.5 ПК).</div>
+  <h3>Тайминги</h3>
+  <div class="grid">
+    <div class="card"><h4>Задержание</h4><p>до <b>60 мин</b> (ст. 2.2.3)</p></div>
+    <div class="card"><h4>Адвокат</h4><p>ответ <b>3 мин</b>, приезд <b>7 мин</b></p></div>
+    <div class="card"><h4>Звонок</h4><p><b>3 мин</b>, вызов частного адвоката</p></div>
+    <div class="card"><h4>Беседа с адвокатом</h4><p>до <b>10 мин</b> (ст. 2.2.1)</p></div>
+    <div class="card"><h4>Прокурор (госслужащие)</h4><p>ответ <b>3 мин</b>, приезд <b>10 мин</b></p></div>
+    <div class="card"><h4>Видео</h4><p><b>48 ч</b> (ООС 7.4) / до <b>72 ч</b> (ст. 2.4)</p></div>
+  </div>
+</section>
+
+<section id="sila" class="panel">
+  <h2>Стадии применения силы <span class="n">ПК гл. 9</span></h2>
+  <ol class="steps">
+    <li><b>Присутствие</b> — идентификация, демонстрация силы.</li>
+    <li><b>Устное требование</b> — чёткий приказ прекратить противоправные действия.</li>
+    <li><b>Физическая сила</b> — заломы, болевые приёмы, дубинка.</li>
+    <li><b>Спецсредства</b> — электрошок, резиновые пули, газ, служебные собаки.</li>
+    <li><b>Огнестрельное оружие</b> — при угрозе жизни или вооружённом сопротивлении, предупредительный выстрел не обязателен.</li>
+  </ol>
+  <p class="hint">Последовательность можно нарушить при угрозе жизни или попытке побега. Необходимая оборона — ст. 4.1 УК, задержание преступника — ст. 4.2 УК.</p>
+  <h3>Осмотр и обыск ТС</h3>
+  <ul class="list">
+    <li><b>Осмотр</b> — визуальный, без физического контакта с грузом (ст. 5.5 ПК).</li>
+    <li><b>Обыск</b> — физическое исследование, нужно основание: преступление или рейд по ОПГ.</li>
+  </ul>
+  <h3>Остановка ТС (ПК гл. 12)</h3>
+  <ul class="list">
+    <li>Подозрение, что водитель или пассажиры причастны к правонарушению либо в розыске.</li>
+    <li>Сходство ТС с ориентировкой (угон, причастность к преступлению).</li>
+    <li>Выборочная проверка документов ГИБДД на стационарных или передвижных постах.</li>
+  </ul>
+  <h3>Оружие и спецсредства (ФЗ об обороте оружия)</h3>
+  <ul class="list">
+    <li><b>Лицензия</b> на оружие выдаётся отделением МВД (ст. 2.2). Без лицензии — незаконно, УК 12.8.</li>
+    <li>С лицензией можно <b>скрытно</b> носить оружие, купленное только в спец. магазине (ст. 2.4–2.6).</li>
+    <li>Применению оружия предшествует <b>предупреждение</b> (ст. 2.15).</li>
+    <li><b>Тазер</b> гражданским запрещён (2.14); госслужащим при исполнении — разрешён (3.8, 3.10).</li>
+    <li>Изъятие оружия и брони из ТС — при обыске по ордеру (ст. 2.17).</li>
+  </ul>
+</section>
+
+<section id="zalog" class="panel">
+  <h2>Наказания, залог, судимость <span class="n">УК, общая часть</span></h2>
+  <h3>Категории тяжести (ст. 2.2)</h3>
+  <div class="grid">
+    <div class="card"><h4>Небольшой</h4><p>до <b>20 мес</b> ЛС</p></div>
+    <div class="card"><h4>Средней</h4><p><b>21–30 мес</b> ЛС</p></div>
+    <div class="card"><h4>Тяжкое</h4><p><b>31–40 мес</b> ЛС</p></div>
+    <div class="card"><h4>Особо тяжкое</h4><p><b>свыше 40 мес</b> ЛС</p></div>
+  </div>
+  <h3>Сроки и штрафы</h3>
+  <ul class="list">
+    <li><b>Лишение свободы:</b> 5–50 мес; по совокупности до 50, до 100 по приговору или ордеру (ст. 5.5, 5.7).</li>
+    <li><b>Штраф судом:</b> до 300 000 руб (ст. 5.4).</li>
+    <li><b>Сроки давности</b> (ст. 5.13): небольшой 15 дней, средней 20, тяжкое 25, особо тяжкое 30.</li>
+    <li><b>Судимость</b> (ст. 5.16): за тяжкое/особо тяжкое, либо 3+ статьи, либо 2 статьи средней тяжести.</li>
+    <li><b>Наркотики</b> (ст. 5.18): каннабис до 3 г — изъятие без УК; куст = 5 г, семечко = 2 г.</li>
+  </ul>
+  <h3>Залог по приоритету розыска (ст. 5.17)</h3>
+  <div class="bail">
+    <div><div class="s">1★</div><div class="v">25 000</div></div>
+    <div><div class="s">2★</div><div class="v">50 000</div></div>
+    <div><div class="s">3★</div><div class="v">75 000</div></div>
+    <div><div class="s">4★</div><div class="v">100 000</div></div>
+    <div><div class="s">5★</div><div class="v">125 000</div></div>
+  </div>
+  <div class="warnbox"><b>Без залога (ст. 5.17 ч.3):</b> рецидивист; нет суммы; отказ сотрудничать со следствием; осуждён более чем по 3 статьям; есть запись о судимости или арест с её созданием.</div>
+  <h3>Виды розыска (ПК гл. 8)</h3>
+  <ul class="list">
+    <li><b>Госсистемы безопасности</b> — автоматический, присваивается системой «Безопасный город» нарушителю.</li>
+    <li><b>Процессуальный</b> — ставит сотрудник при задержании или расследовании.</li>
+    <li><b>Специальный</b> — по решению суда или ордеру Генпрокуратуры.</li>
+  </ul>
+  <h3>Неприкосновенные лица (ФЗ о неприкосновенности)</h3>
+  <p style="margin:0 0 6px;font-size:14px;color:var(--ink-soft)"><b style="color:var(--ink)">Кто:</b> Премьер, вице-премьеры, министры и замы, судьи, Генпрокуратура (при исполнении), постоянные члены Совета Федерации (директор ФСБ, руководитель МВД, главврач, начальник ГИБДД, генерал армии, директор «Вести Москвы», председатель СК — с замами), начальник ФСО и зам, госсоветник при Генпрокуратуре.</p>
+  <ul class="list">
+    <li>ТС неприкосновенного <b>нельзя останавливать и досматривать</b>; ГИБДД может — только при явной угрозе, признаках преступления или исполнении судебного/прокурорского акта.</li>
+    <li>К <b>УК не привлекать</b> до приостановления статуса (кроме ордера/решения, вынесенного до получения статуса).</li>
+    <li>Статус подтверждается <b>служебным удостоверением</b>; при задержании дать возможность подтвердить.</li>
+    <li><b>Арест</b> — только после ордера Генпрокуратуры о лишении статуса. Нет сотрудников ГП на месте — освободить, материалы в ГП за 24 ч.</li>
+  </ul>
+</section>
+
+<section id="polnom" class="panel">
+  <h2>Полномочия и территории <span class="n">ФЗ о полиции, о территориях</span></h2>
+  <h3>Права полиции (гл. III)</h3>
+  <ul class="list">
+    <li>Требовать прекратить противоправные действия, проверять документы, удостоверять личность, контролировать лицензии.</li>
+    <li>Вызывать для объяснений по делам; при уклонении — привод. Осматривать места происшествий.</li>
+    <li>Патрулировать, ставить посты и заслоны, ограждать опасные зоны, требовать покинуть или остаться на месте.</li>
+    <li>Доставлять лиц в опьянении, несовершеннолетних нарушителей, иностранцев на высылке.</li>
+    <li>Личный досмотр, досмотр вещей и ТС при основаниях (оружие, наркотики, взрывчатка, похищенное).</li>
+    <li>Проверять места хранения оружия и пропускной режим, применять техсредства и БПЛА.</li>
+  </ul>
+  <h3>Вскрытие и проникновение в ТС (гл. IV)</h3>
+  <ul class="list">
+    <li>Основания: спасение жизни, беспорядки/ЧС, задержание подозреваемого, пресечение преступления, подозрение опьянения водителя, осмотр груза на запрещёнку, угроза теракта.</li>
+    <li>Перед вскрытием: представиться, по требованию предъявить удостоверение, предупредить. Исключение — когда промедление угрожает жизни или нужно немедленное пресечение либо преследование.</li>
+  </ul>
+  <h3>Территории и зоны (ФЗ о статусе территорий)</h3>
+  <ul class="list">
+    <li><b>Охраняемые</b> (зелёные): вход всем при законном основании; можно потребовать покинуть.</li>
+    <li><b>Закрытые</b> (жёлтые): только по исчерпывающему списку лиц; обыски недопустимы кроме ПК; проникновение — УК 12.7 ч.1.</li>
+    <li><b>Режимные</b> (красные): личный обыск при проходе (по ПК); проникновение — УК 12.7 ч.2.</li>
+    <li><b>Особый статус</b> (правительство, Красная площадь): охрана ФСО, ВС, ФСБ; нарушение режима — УК 12.7 ч.2.</li>
+  </ul>
+</section>
+
+<section id="reglament" class="panel">
+  <h2>Регламенты <span class="n">ОМОН / МВД, Discord</span></h2>
+  <h3>Ограбления банков и бизнесов</h3>
+  <ul class="list">
+    <li>Банк/бизнес горит на карте или системное сообщение о грабеже — сразу выезд на код банка.</li>
+    <li><b>Переговорщик:</b> <code>/s Я являюсь переговорщиком</code>, <code>/do На груди жетон: [МВД - 87436 | ОМОН]</code>. Формат жетона: [Структура - Номер | Отдел].</li>
+    <li>Попросить показать заложника. <b>Отказ показать — основание для пуша.</b></li>
+    <li>В банке допустимо <b>только одно требование — зелёный коридор (ЗК)</b>. Деньги и прочее — недопустимо.</li>
+    <li>Отличать просьбу от требования (в просьбе — отказывать).</li>
+    <li>Обдумывание требований: до <b>5 мин</b> — пуш не начинается; более 5 мин — можно объявлять пуш.</li>
+  </ul>
+  <h3>Похищения</h3>
+  <ul class="list">
+    <li>Оповещение «Заложники» → взять вызов, <code>/dep: Сотрудник МВД работает по похищению</code>.</li>
+    <li>Переговорщик с жетоном [МВД - 87436 | ОМОН]. Убедиться в числе и состоянии заложников <b>один раз</b>, сделать скрин. Максимум <b>6</b> заложников.</li>
+    <li><b>Денежный выкуп:</b> обычный игрок — до <b>20 000</b>; лидер/зам фракции — до <b>100 000</b>.</li>
+    <li><b>Выкуп предметами</b> (только за лидера/зама, максимальная прочность): МВД/ГИБДД — лидер 75 / зам 50 тяж. бронежилетов; Армия — 8000 / 4000 материалов; Правительство — 700к/300к ₽ или бронежилеты; ФСБ — 75 / 45 бронежилетов; Больница — 350 / 250 эпинефрина.</li>
+    <li><b>Зелёный коридор:</b> не более <b>45 сек</b> (отсчёт с выезда похитителей). Время на выполнение — не менее <b>15 мин</b>. Требовать можно только <b>одну</b> часть выкупа.</li>
+    <li>Выкуп передаётся через торговлю; после получения похитители отпускают заложников за 5 мин или до конца ЗК.</li>
+    <li><b>Пуш</b> при: выкупе больше нормы, запросе спецтехники/вертолёта, нарушении ЗК.</li>
+    <li>После отработки: отчёт + <b>4 скрина</b> (число заложников, снятие денег, передача через торговлю, удостоверение лидера/зама).</li>
+  </ul>
+  <h3>Парковка на территории Управления</h3>
+  <ul class="list">
+    <li><b>Зелёная зона</b> — приоритет для служебного транспорта; <b>жёлтая</b> — резерв; <b>красная</b> — стоянка запрещена.</li>
+    <li>Только служебный транспорт при исполнении. Личные и гражданские авто — запрещены.</li>
+    <li>Нарушение — дисциплинарное наказание, меры по КоАП и принудительная эвакуация.</li>
+  </ul>
+  <p class="hint">Твоё подразделение: ОМОН. Заявки с 3 ранга, спецмероприятия и усиленные операции, повышение — через отчёты (баллы) и запись в кадровый-аудит.</p>
+</section>
+
+<section id="statyi" class="panel">
+  <h2>Статьи <span class="n">поиск и таблица</span></h2>
+  <div class="catjump" id="catjump"></div>
+  <div class="leg"><b>Кат.</b> — тяжесть по УК (ст. 2.2): <span class="rk n">Н</span> небольшой, до 20 мес · <span class="rk s">С</span> средней, 21–30 · <span class="rk t">Т</span> тяжкое, 31–40 · <span class="rk ot">ОТ</span> особо тяжкое, 40+ · <span class="rk adm">адм</span> административное (КоАП, штраф). За тяжкие и особо тяжкие бывает судимость и запрет залога. <b>Розыск ★</b> — ориентир по тяжести; точное значение видно в игре. От розыска зависит сумма залога (1★ 25к … 5★ 125к).</div>
+  <div class="tablewrap">
+    <table class="stbl">
+      <thead><tr><th style="width:96px">Статья</th><th>Состав</th><th style="width:44px">Кат.</th><th style="width:58px">Розыск</th><th style="width:30%">Санкция</th></tr></thead>
+      <tbody id="rows">
+      <tr class="grouprow"><td colspan="5">УК · Жизнь и здоровье</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="ot"><td class="code">УК 6.1</td><td class="desc">Убийство</td><td><span class="rk ot">ОТ</span></td><td class="rst">3–4★</td><td class="rsanc">до 50 мес ЛС</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="s"><td class="code">УК 6.2</td><td class="desc">Убийство при превышении обороны или задержания</td><td><span class="rk s">С</span></td><td class="rst">2★</td><td class="rsanc">до 30 мес ЛС</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="n"><td class="code">УК 6.3</td><td class="desc">Причинение смерти по неосторожности</td><td><span class="rk n">Н</span></td><td class="rst">1★</td><td class="rsanc">до 20 мес ЛС</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="t"><td class="code">УК 6.4</td><td class="desc">Умышленный тяжкий вред здоровью</td><td><span class="rk t">Т</span></td><td class="rst">3★</td><td class="rsanc">до 40 мес ЛС</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="s"><td class="code">УК 6.5</td><td class="desc">Умышленный средней тяжести вред здоровью</td><td><span class="rk s">С</span></td><td class="rst">2★</td><td class="rsanc">45–75к / до 30 мес</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="n"><td class="code">УК 6.6</td><td class="desc">Тяжкий вред здоровью по неосторожности</td><td><span class="rk n">Н</span></td><td class="rst">1★</td><td class="rsanc">до 50к / до 20 мес</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="n"><td class="code">УК 6.7</td><td class="desc">Угроза убийством или тяжким вредом</td><td><span class="rk n">Н</span></td><td class="rst">2★</td><td class="rsanc">25–100к / до 10 мес</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="s"><td class="code">УК 6.8</td><td class="desc">Нарушение ПДД, повлёкшее тяжкий вред или смерть</td><td><span class="rk s">С</span></td><td class="rst">2★</td><td class="rsanc">до 60к / 20–30 мес</td></tr>
+      <tr class="grouprow"><td colspan="5">УК · Свобода, честь</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="t"><td class="code">УК 7.1</td><td class="desc">Похищение человека</td><td><span class="rk t">Т</span></td><td class="rst">3★</td><td class="rsanc">до 40 мес ЛС</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="n"><td class="code">УК 7.2</td><td class="desc">Незаконное лишение свободы</td><td><span class="rk n">Н</span></td><td class="rst">1★</td><td class="rsanc">до 20 мес ЛС</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="n"><td class="code">УК 7.3</td><td class="desc">Клевета</td><td><span class="rk n">Н</span></td><td class="rst">1★</td><td class="rsanc">5–100к / до 20 мес</td></tr>
+      <tr class="grouprow"><td colspan="5">УК · Собственность</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="s"><td class="code">УК 10.1</td><td class="desc">Мошенничество, хищение обманом</td><td><span class="rk s">С</span></td><td class="rst">2★</td><td class="rsanc">до 60к / до 30 мес</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="t"><td class="code">УК 10.2</td><td class="desc">Грабёж, открытое хищение</td><td><span class="rk t">Т</span></td><td class="rst">3★</td><td class="rsanc">до 40 мес ЛС</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="t"><td class="code">УК 10.3</td><td class="desc">Неправомерное завладение ТС (угон)</td><td><span class="rk t">Т</span></td><td class="rst">2★</td><td class="rsanc">до 75к / до 40 мес</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="t"><td class="code">УК 10.4</td><td class="desc">Умышленное уничтожение чужого имущества</td><td><span class="rk t">Т</span></td><td class="rst">2★</td><td class="rsanc">до 100к / до 40 мес</td></tr>
+      <tr class="grouprow"><td colspan="5">УК · Оружие, наркотики, безопасность</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="t"><td class="code">УК 12.1</td><td class="desc">Оборот средств радиоэлектронного подавления (глушилки)</td><td><span class="rk t">Т</span></td><td class="rst">3★</td><td class="rsanc">30–40к / до 40 мес</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="t"><td class="code">УК 12.3</td><td class="desc">Бандитизм</td><td><span class="rk t">Т</span></td><td class="rst">3★</td><td class="rsanc">25–35к / до 40 мес</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="s"><td class="code">УК 12.4</td><td class="desc">Хулиганство</td><td><span class="rk s">С</span></td><td class="rst">2★</td><td class="rsanc">до 50к / до 30 мес</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="ot"><td class="code">УК 12.5</td><td class="desc">Массовые беспорядки</td><td><span class="rk ot">ОТ</span></td><td class="rst">4★</td><td class="rsanc">до 50 мес ЛС</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="s"><td class="code">УК 12.6</td><td class="desc">Нарушение порядка проведения митингов</td><td><span class="rk s">С</span></td><td class="rst">2★</td><td class="rsanc">до 30 мес ЛС</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="ot"><td class="code">УК 12.7</td><td class="desc">Незаконное проникновение на закрытые/режимные объекты</td><td><span class="rk ot">ОТ</span></td><td class="rst">2★</td><td class="rsanc">до 75к / до 50 мес</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="ot"><td class="code">УК 12.8</td><td class="desc">Незаконный оборот оружия и спецсредств</td><td><span class="rk ot">ОТ</span></td><td class="rst">3–4★</td><td class="rsanc">20–80к / до 50 мес</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="t"><td class="code">УК 13.1</td><td class="desc">Наркотики: хранение, сбыт, производство</td><td><span class="rk t">Т</span></td><td class="rst">2★</td><td class="rsanc">до 80к / до 40 мес</td></tr>
+      <tr class="grouprow"><td colspan="5">УК · Власть, должностные</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="s"><td class="code">УК 14.1</td><td class="desc">Разглашение государственной тайны</td><td><span class="rk s">С</span></td><td class="rst">2★</td><td class="rsanc">до 30 мес ЛС</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="ot"><td class="code">УК 15.1</td><td class="desc">Превышение должностных полномочий</td><td><span class="rk ot">ОТ</span></td><td class="rst">4★</td><td class="rsanc">до 65к / до 50 мес</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="ot"><td class="code">УК 15.1.1</td><td class="desc">Злоупотребление должностными полномочиями</td><td><span class="rk ot">ОТ</span></td><td class="rst">3★</td><td class="rsanc">до 50к / до 50 мес</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="t"><td class="code">УК 15.2</td><td class="desc">Нецелевое расходование бюджетных средств</td><td><span class="rk t">Т</span></td><td class="rst">3★</td><td class="rsanc">40–70к / до 40 мес</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="t"><td class="code">УК 15.3</td><td class="desc">Неисполнение приказа сотрудником ОВД</td><td><span class="rk t">Т</span></td><td class="rst">3★</td><td class="rsanc">20–40к / до 40 мес</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="t"><td class="code">УК 15.4</td><td class="desc">Получение взятки</td><td><span class="rk t">Т</span></td><td class="rst">4★</td><td class="rsanc">50–100к / до 40 мес</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="s"><td class="code">УК 15.5</td><td class="desc">Дача взятки</td><td><span class="rk s">С</span></td><td class="rst">3★</td><td class="rsanc">до 70к / до 30 мес</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="ot"><td class="code">УК 15.6</td><td class="desc">Халатность</td><td><span class="rk ot">ОТ</span></td><td class="rst">3★</td><td class="rsanc">до 70к / до 50 мес</td></tr>
+      <tr class="grouprow"><td colspan="5">УК · Правосудие</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="ot"><td class="code">УК 16.1</td><td class="desc">Нахождение в розыске гос. системы безопасности</td><td><span class="rk ot">ОТ</span></td><td class="rst">4★</td><td class="rsanc">до 50 мес ЛС</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="s"><td class="code">УК 16.2</td><td class="desc">Воспрепятствование осуществлению правосудия</td><td><span class="rk s">С</span></td><td class="rst">2★</td><td class="rsanc">до 50к / до 30 мес</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="t"><td class="code">УК 16.3</td><td class="desc">Неуважение к суду</td><td><span class="rk t">Т</span></td><td class="rst">3★</td><td class="rsanc">до 60к / до 40 мес</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="ot"><td class="code">УК 16.4</td><td class="desc">Привлечение заведомо невиновного к ответственности</td><td><span class="rk ot">ОТ</span></td><td class="rst">4★</td><td class="rsanc">до 50 мес ЛС</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="t"><td class="code">УК 16.5</td><td class="desc">Незаконные задержание или содержание под стражей</td><td><span class="rk t">Т</span></td><td class="rst">3★</td><td class="rsanc">до 40 мес ЛС</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="t"><td class="code">УК 16.6</td><td class="desc">Принуждение к даче показаний</td><td><span class="rk t">Т</span></td><td class="rst">3★</td><td class="rsanc">до 40 мес ЛС</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="ot"><td class="code">УК 16.7</td><td class="desc">Вынесение заведомо неправосудного приговора</td><td><span class="rk ot">ОТ</span></td><td class="rst">4★</td><td class="rsanc">до 100к / до 50 мес</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="s"><td class="code">УК 16.8</td><td class="desc">Заведомо ложный донос</td><td><span class="rk s">С</span></td><td class="rst">2★</td><td class="rsanc">до 75к / до 30 мес</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="t"><td class="code">УК 16.9</td><td class="desc">Заведомо ложные показания или заключение эксперта</td><td><span class="rk t">Т</span></td><td class="rst">3★</td><td class="rsanc">до 45к / до 40 мес</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="n"><td class="code">УК 16.10</td><td class="desc">Отказ свидетеля или потерпевшего от дачи показаний</td><td><span class="rk n">Н</span></td><td class="rst">1★</td><td class="rsanc">до 40к / до 10 мес</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="t"><td class="code">УК 16.11</td><td class="desc">Побег из места ЛС, из-под ареста или стражи</td><td><span class="rk t">Т</span></td><td class="rst">3★</td><td class="rsanc">до 35 мес ЛС</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="ot"><td class="code">УК 16.12</td><td class="desc">Неисполнение приговора или решения суда</td><td><span class="rk ot">ОТ</span></td><td class="rst">4★</td><td class="rsanc">до 60к / до 50 мес</td></tr>
+      <tr class="grouprow"><td colspan="5">УК · Порядок управления</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="ot"><td class="code">УК 17.1</td><td class="desc">Посягательство на жизнь сотрудника правоохранительного органа</td><td><span class="rk ot">ОТ</span></td><td class="rst">5★</td><td class="rsanc">до 50 мес ЛС</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="s"><td class="code">УК 17.2</td><td class="desc">Применение насилия в отношении представителя власти</td><td><span class="rk s">С</span></td><td class="rst">3★</td><td class="rsanc">до 60к / до 30 мес</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="s"><td class="code">УК 17.3</td><td class="desc">Оскорбление представителя власти</td><td><span class="rk s">С</span></td><td class="rst">2★</td><td class="rsanc">до 40к / до 30 мес</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="s"><td class="code">УК 17.4</td><td class="desc">Воспрепятствование неотложным действиям</td><td><span class="rk s">С</span></td><td class="rst">2★</td><td class="rsanc">до 40к / до 30 мес</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="s"><td class="code">УК 17.5</td><td class="desc">Самоуправство</td><td><span class="rk s">С</span></td><td class="rst">2★</td><td class="rsanc">до 35к / до 30 мес</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="s"><td class="code">УК 17.6</td><td class="desc">Неповиновение законному распоряжению или требованию</td><td><span class="rk s">С</span></td><td class="rst">2★</td><td class="rsanc">до 35к / до 30 мес</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="s"><td class="code">УК 17.7</td><td class="desc">Отказ от оплаты штрафа (уголовный)</td><td><span class="rk s">С</span></td><td class="rst">2★</td><td class="rsanc">2× штрафа / до 30 мес</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="ot"><td class="code">УК 17.8</td><td class="desc">Незаконная помеха при задержании или аресте</td><td><span class="rk ot">ОТ</span></td><td class="rst">3★</td><td class="rsanc">до 100к / до 50 мес</td></tr>
+      <tr class="grouprow"><td colspan="5">УК · Прочее (воинские, права, эконом)</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="t"><td class="code">УК 8.4</td><td class="desc">Дезертирство</td><td><span class="rk t">Т</span></td><td class="rst">3★</td><td class="rsanc">до 40 мес ЛС</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="s"><td class="code">УК 8.3</td><td class="desc">Самовольное оставление части или места службы</td><td><span class="rk s">С</span></td><td class="rst">2★</td><td class="rsanc">до 30 мес ЛС</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="n"><td class="code">УК 8.2</td><td class="desc">Неисполнение приказа (военная служба)</td><td><span class="rk n">Н</span></td><td class="rst">1★</td><td class="rsanc">до 40к / до 20 мес</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="s"><td class="code">УК 9.1</td><td class="desc">Нарушение неприкосновенности жилища</td><td><span class="rk s">С</span></td><td class="rst">2★</td><td class="rsanc">до 75к / до 30 мес</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="t"><td class="code">УК 9.2</td><td class="desc">Воспрепятствование деятельности адвоката</td><td><span class="rk t">Т</span></td><td class="rst">3★</td><td class="rsanc">до 85к / до 40 мес</td></tr>
+      <tr class="srow" data-cat="uk" data-cls="n"><td class="code">УК 11.1</td><td class="desc">Незаконное предпринимательство</td><td><span class="rk n">Н</span></td><td class="rst">1★</td><td class="rsanc">до 100к / до 10 мес</td></tr>
+      <tr class="grouprow"><td colspan="5">КоАП · Общественный порядок</td></tr>
+      <tr class="srow" data-cat="koap" data-cls="adm"><td class="code">КоАП 5.1</td><td class="desc">Оскорбление, унижение чести и достоинства</td><td><span class="rk adm">адм</span></td><td class="rst">—</td><td class="rsanc">до 10 000</td></tr>
+      <tr class="srow" data-cat="koap" data-cls="adm"><td class="code">КоАП 5.2</td><td class="desc">Курение в неположенном месте</td><td><span class="rk adm">адм</span></td><td class="rst">—</td><td class="rsanc">до 5 000</td></tr>
+      <tr class="srow" data-cat="koap" data-cls="adm"><td class="code">КоАП 5.3</td><td class="desc">Нецензурная лексика в общественном месте</td><td><span class="rk adm">адм</span></td><td class="rst">—</td><td class="rsanc">до 5 000</td></tr>
+      <tr class="srow" data-cat="koap" data-cls="adm"><td class="code">КоАП 5.4</td><td class="desc">Распитие алкоголя или появление в пьяном виде</td><td><span class="rk adm">адм</span></td><td class="rst">—</td><td class="rsanc">до 5 000</td></tr>
+      <tr class="srow" data-cat="koap" data-cls="adm"><td class="code">КоАП 5.5</td><td class="desc">Громкие выкрики или музыка в ночное время</td><td><span class="rk adm">адм</span></td><td class="rst">—</td><td class="rsanc">до 5 000</td></tr>
+      <tr class="srow" data-cat="koap" data-cls="adm"><td class="code">КоАП 5.6</td><td class="desc">Мелкое хулиганство, приставание к гражданам</td><td><span class="rk adm">адм</span></td><td class="rst">—</td><td class="rsanc">до 5 000</td></tr>
+      <tr class="srow" data-cat="koap" data-cls="adm"><td class="code">КоАП 5.7</td><td class="desc">Неуважение к государственному служащему</td><td><span class="rk adm">адм</span></td><td class="rst">—</td><td class="rsanc">до 10 000</td></tr>
+      <tr class="srow" data-cat="koap" data-cls="adm"><td class="code">КоАП 5.8</td><td class="desc">Нарушение правил ношения холодного оружия</td><td><span class="rk adm">адм</span></td><td class="rst">—</td><td class="rsanc">до 10 000</td></tr>
+      <tr class="grouprow"><td colspan="5">КоАП · Здоровье и служба</td></tr>
+      <tr class="srow" data-cat="koap" data-cls="adm"><td class="code">КоАП 7.1</td><td class="desc">Побои лёгкой степени (без уголовного состава)</td><td><span class="rk adm">адм</span></td><td class="rst">—</td><td class="rsanc">до 20 000</td></tr>
+      <tr class="srow" data-cat="koap" data-cls="adm"><td class="code">КоАП 7.2</td><td class="desc">Воспрепятствование или отказ в медицинской помощи</td><td><span class="rk adm">адм</span></td><td class="rst">—</td><td class="rsanc">до 40 000</td></tr>
+      <tr class="srow" data-cat="koap" data-cls="adm"><td class="code">КоАП 7.3</td><td class="desc">Отсутствие или просроченные медсправки (госслужащие)</td><td><span class="rk adm">адм</span></td><td class="rst">—</td><td class="rsanc">до 50 000</td></tr>
+      <tr class="srow" data-cat="koap" data-cls="adm"><td class="code">КоАП 9.6</td><td class="desc">Вызов сотрудника прокуратуры без оснований</td><td><span class="rk adm">адм</span></td><td class="rst">—</td><td class="rsanc">до 50 000</td></tr>
+      <tr class="grouprow"><td colspan="5">ПДД · Документы и ТС</td></tr>
+      <tr class="srow" data-cat="koap" data-road="1" data-cls="adm"><td class="code">КоАП 11.1</td><td class="desc">ТС без регистрации или гос. номеров</td><td><span class="rk adm">адм</span></td><td class="rst">—</td><td class="rsanc">до 5 000</td></tr>
+      <tr class="srow" data-cat="koap" data-road="1" data-cls="adm"><td class="code">КоАП 11.2</td><td class="desc">Тонировка менее 70%</td><td><span class="rk adm">адм</span></td><td class="rst">—</td><td class="rsanc">до 10 000</td></tr>
+      <tr class="srow" data-cat="koap" data-road="1" data-cls="adm"><td class="code">КоАП 11.8</td><td class="desc">Без документов: права или удостоверение</td><td><span class="rk adm">адм</span></td><td class="rst">—</td><td class="rsanc">до 5 000</td></tr>
+      <tr class="srow" data-cat="koap" data-road="1" data-cls="adm"><td class="code">КоАП 11.9</td><td class="desc">Не пристёгнут ремень безопасности</td><td><span class="rk adm">адм</span></td><td class="rst">—</td><td class="rsanc">до 5 000</td></tr>
+      <tr class="srow" data-cat="koap" data-road="1" data-cls="adm"><td class="code">КоАП 11.10</td><td class="desc">Нарушение правил пассажиром ТС</td><td><span class="rk adm">адм</span></td><td class="rst">—</td><td class="rsanc">до 5 000</td></tr>
+      <tr class="grouprow"><td colspan="5">ПДД · Скорость</td></tr>
+      <tr class="srow" data-cat="koap" data-road="1" data-cls="adm"><td class="code">КоАП 24.1</td><td class="desc">Превышение скорости на 10–19 км/ч</td><td><span class="rk adm">адм</span></td><td class="rst">—</td><td class="rsanc">предупр. / до 2 000</td></tr>
+      <tr class="srow" data-cat="koap" data-road="1" data-cls="adm"><td class="code">КоАП 24.2</td><td class="desc">Превышение скорости на 20–39 км/ч</td><td><span class="rk adm">адм</span></td><td class="rst">—</td><td class="rsanc">до 4 000</td></tr>
+      <tr class="srow" data-cat="koap" data-road="1" data-cls="adm"><td class="code">КоАП 24.3</td><td class="desc">Превышение скорости на 40–59 км/ч</td><td><span class="rk adm">адм</span></td><td class="rst">—</td><td class="rsanc">до 6 000</td></tr>
+      <tr class="srow" data-cat="koap" data-road="1" data-cls="adm"><td class="code">КоАП 24.4</td><td class="desc">Превышение скорости на 60–79 км/ч</td><td><span class="rk adm">адм</span></td><td class="rst">—</td><td class="rsanc">до 8 000</td></tr>
+      <tr class="srow" data-cat="koap" data-road="1" data-cls="adm"><td class="code">КоАП 24.5</td><td class="desc">Превышение скорости на 80+ км/ч</td><td><span class="rk adm">адм</span></td><td class="rst">—</td><td class="rsanc">до 10 000 + лишение</td></tr>
+      <tr class="grouprow"><td colspan="5">ПДД · Опасное вождение и опьянение</td></tr>
+      <tr class="srow" data-cat="koap" data-road="1" data-cls="adm"><td class="code">КоАП 23.1.4</td><td class="desc">Управление в состоянии опьянения (от 0,35 промилле)</td><td><span class="rk adm">адм</span></td><td class="rst">—</td><td class="rsanc">до 10 000 + лишение</td></tr>
+      <tr class="srow" data-cat="koap" data-road="1" data-cls="adm"><td class="code">КоАП 23.2</td><td class="desc">Опасное вождение</td><td><span class="rk adm">адм</span></td><td class="rst">—</td><td class="rsanc">до 5 000</td></tr>
+      <tr class="srow" data-cat="koap" data-road="1" data-cls="adm"><td class="code">КоАП 22.3</td><td class="desc">Оставление места ДТП, невыполнение обязанностей</td><td><span class="rk adm">адм</span></td><td class="rst">—</td><td class="rsanc">до 5 000</td></tr>
+      <tr class="grouprow"><td colspan="5">ПДД · Манёвры и полосы</td></tr>
+      <tr class="srow" data-cat="koap" data-road="1" data-cls="adm"><td class="code">КоАП 13.1</td><td class="desc">Проезд на запрещающий сигнал светофора</td><td><span class="rk adm">адм</span></td><td class="rst">—</td><td class="rsanc">до 10 000</td></tr>
+      <tr class="srow" data-cat="koap" data-road="1" data-cls="adm"><td class="code">КоАП 14.1</td><td class="desc">Манёвр без сигнала поворота</td><td><span class="rk adm">адм</span></td><td class="rst">—</td><td class="rsanc">до 10 000</td></tr>
+      <tr class="srow" data-cat="koap" data-road="1" data-cls="adm"><td class="code">КоАП 14.4</td><td class="desc">Поворот, разворот или задний ход в нарушение правил</td><td><span class="rk adm">адм</span></td><td class="rst">—</td><td class="rsanc">до 10 000</td></tr>
+      <tr class="srow" data-cat="koap" data-road="1" data-cls="adm"><td class="code">КоАП 15.1</td><td class="desc">Выезд на встречную полосу</td><td><span class="rk adm">адм</span></td><td class="rst">—</td><td class="rsanc">до 10 000 + лишение</td></tr>
+      <tr class="srow" data-cat="koap" data-road="1" data-cls="adm"><td class="code">КоАП 15.4</td><td class="desc">Движение по обочине, тротуару или газону</td><td><span class="rk adm">адм</span></td><td class="rst">—</td><td class="rsanc">до 10 000</td></tr>
+      <tr class="srow" data-cat="koap" data-road="1" data-cls="adm"><td class="code">КоАП 16.3</td><td class="desc">Обгон в местах, где он запрещён</td><td><span class="rk adm">адм</span></td><td class="rst">—</td><td class="rsanc">до 10 000</td></tr>
+      <tr class="grouprow"><td colspan="5">ПДД · Стоянка и приоритет</td></tr>
+      <tr class="srow" data-cat="koap" data-road="1" data-cls="adm"><td class="code">КоАП 17.2</td><td class="desc">Остановка или стоянка на остановке маршрутных ТС</td><td><span class="rk adm">адм</span></td><td class="rst">—</td><td class="rsanc">до 10 000</td></tr>
+      <tr class="srow" data-cat="koap" data-road="1" data-cls="adm"><td class="code">КоАП 17.3</td><td class="desc">Стоянка на трамвайных путях, газоне или далее 1-го ряда</td><td><span class="rk adm">адм</span></td><td class="rst">—</td><td class="rsanc">до 10 000</td></tr>
+      <tr class="srow" data-cat="koap" data-road="1" data-cls="adm"><td class="code">КоАП 17.5</td><td class="desc">Прочие нарушения остановки или стоянки</td><td><span class="rk adm">адм</span></td><td class="rst">—</td><td class="rsanc">до 5 000</td></tr>
+      <tr class="srow" data-cat="koap" data-road="1" data-cls="adm"><td class="code">КоАП 21.1</td><td class="desc">Непредоставление преимущества спецмашине</td><td><span class="rk adm">адм</span></td><td class="rst">—</td><td class="rsanc">до 10 000</td></tr>
+      <tr class="srow" data-cat="koap" data-road="1" data-cls="adm"><td class="code">КоАП 21.3</td><td class="desc">Непредоставление преимущества на главной дороге</td><td><span class="rk adm">адм</span></td><td class="rst">—</td><td class="rsanc">до 10 000</td></tr>
+      <tr class="grouprow"><td colspan="5">ПДД · Перевозка людей</td></tr>
+      <tr class="srow" data-cat="koap" data-road="1" data-cls="adm"><td class="code">КоАП 25.1</td><td class="desc">Перевозка вне кабины или сверх нормы</td><td><span class="rk adm">адм</span></td><td class="rst">—</td><td class="rsanc">10 000</td></tr>
+      <tr class="srow" data-cat="koap" data-road="1" data-cls="adm"><td class="code">КоАП 25.2</td><td class="desc">Перевозка на мотоцикле без права управления</td><td><span class="rk adm">адм</span></td><td class="rst">—</td><td class="rsanc">5 000</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="noresult" id="noresult" hidden>Ничего не найдено. Попробуй номер статьи или другое слово.</div>
+</section>
+
+</main>
+</div>
+
+<footer>Внутриигровые формулировки проекта Россия Онлайн. Источники: УК (ФКЗ №2), КоАП (ФКЗ №5), ПК. Не официальный документ фракции.</footer>
+<button class="themebtn" id="themebtn" type="button">Тема</button>
+
+<script>
+(function(){
+  var btn=document.getElementById('themebtn');
+  function cur(){var t=document.documentElement.getAttribute('data-theme');return t?t:'dark';}
+  btn.addEventListener('click',function(){var n=cur()==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',n);try{localStorage.setItem('mvd-pm-theme',n);}catch(e){}});
+  try{var s=localStorage.getItem('mvd-pm-theme');if(s)document.documentElement.setAttribute('data-theme',s);}catch(e){}
+
+  function keepScroll(fn){
+    var rech=document.getElementById('rech');
+    var anchor=rech?rech.offsetTop+rech.offsetHeight:0;
+    var y=window.scrollY||window.pageYOffset||0, h=document.documentElement.scrollHeight;
+    fn();
+    var d=document.documentElement.scrollHeight-h;
+    if(d && y>anchor) window.scrollTo(0,y+d);
+  }
+
+  var q=document.getElementById('q'), rows=[].slice.call(document.querySelectorAll('.srow'));
+  var grouprows=[].slice.call(document.querySelectorAll('.grouprow'));
+  var chips=[].slice.call(document.querySelectorAll('.chip')), count=document.getElementById('count'), noresult=document.getElementById('noresult');
+  var filter='all';
+  var codeMap={};
+  rows.forEach(function(r){ r._t=r.textContent.toLowerCase(); r._desc=r.querySelector('.desc'); r._orig=r._desc.innerHTML; codeMap[r.querySelector('.code').textContent.trim()]=r; });
+
+  function esc(s){return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');}
+  var results=document.getElementById('results');
+  function renderResults(list,re){
+    if(!list.length){ results.innerHTML='<div class="rhead">Ничего не найдено — попробуй номер или другое слово</div>'; results.hidden=false; return; }
+    var html='<div class="rhead">Найдено: '+list.length+' — тап добавит в речь</div>';
+    list.forEach(function(r){
+      var i=rows.indexOf(r);
+      html+='<div class="ritem'+(r.classList.contains('sel')?' sel':'')+'" data-i="'+i+'">'
+        +'<span class="rc">'+r.querySelector('.code').textContent+'</span>'
+        +'<span class="rd">'+(re?r._orig.replace(re,'<mark>$1</mark>'):r._orig)+'</span>'
+        +'<span class="rk '+(r.dataset.cls||'')+'">'+r.querySelector('.rk').textContent+'</span>'
+        +'<span class="rsn">'+r.querySelector('.rsanc').textContent+'</span></div>';
+    });
+    results.innerHTML=html; results.hidden=false;
+  }
+  results.addEventListener('click',function(e){ var it=e.target.closest('.ritem'); if(!it)return; var r=rows[+it.dataset.i]; if(!r)return; keepScroll(function(){ r.classList.toggle('sel'); rebuild(); apply(); }); });
+  function apply(){
+    var term=q.value.trim().toLowerCase(), shown=0, active=(term||filter!=='all'), matched=[];
+    var re= term? new RegExp('('+esc(term)+')','ig') : null;
+    rows.forEach(function(r){
+      var okF = filter==='all' || (filter==='uk'&&r.dataset.cat==='uk') || (filter==='koap'&&r.dataset.cat==='koap') || (filter==='road'&&r.dataset.road==='1') || (filter==='heavy'&&(r.dataset.cls==='t'||r.dataset.cls==='ot'));
+      var okT = !term || r._t.indexOf(term)>-1;
+      if(okF&&okT){ r.classList.remove('rhidden'); shown++; matched.push(r);
+        r._desc.innerHTML = re ? r._orig.replace(re,'<mark>$1</mark>') : r._orig;
+      } else { r.classList.add('rhidden'); r._desc.innerHTML=r._orig; }
+    });
+    results.hidden=true; results.innerHTML='';
+    // поиск фильтрует саму таблицу; категории и легенду прячем во время поиска
+    var cj=document.getElementById('catjump'), lg=document.querySelector('.leg');
+    if(cj) cj.style.display = term ? 'none' : 'flex';
+    if(lg) lg.style.display = term ? 'none' : 'block';
+    grouprows.forEach(function(gr){
+      var vis=false,n=gr.nextElementSibling;
+      while(n&&!n.classList.contains('grouprow')){ if(n.classList.contains('srow')&&!n.classList.contains('rhidden')){vis=true;break;} n=n.nextElementSibling; }
+      gr.classList.toggle('rhidden',!vis);
+    });
+    count.textContent = shown+' из '+rows.length;
+    noresult.hidden = shown>0;
+  }
+  q.addEventListener('input',apply);
+  document.addEventListener('keydown',function(e){
+    var inField=/^(input|textarea)$/i.test((e.target.tagName||''));
+    if(e.key==='/' && !inField){ e.preventDefault(); q.focus(); q.select(); }
+    else if(e.key==='Escape' && inField && e.target===q){ if(q.value){ q.value=''; apply(); } else { q.blur(); } }
+  });
+  chips.forEach(function(c){ c.addEventListener('click',function(){ filter=c.dataset.f; chips.forEach(function(x){x.setAttribute('aria-pressed', x===c?'true':'false');}); apply(); }); });
+
+  var catjump=document.getElementById('catjump');
+  grouprows.forEach(function(gr){
+    var full=gr.textContent.trim();
+    var sh=full.replace(/^.*·\s*/,'');
+    var b=document.createElement('button'); b.type='button'; b.textContent=sh; b.title=full;
+    b.addEventListener('click',function(){ gr.scrollIntoView({block:'start'}); });
+    catjump.appendChild(b);
+  });
+  apply();
+
+  function copyText(t,btn,ok){
+    function flash(){var o=btn.textContent;btn.textContent=ok;setTimeout(function(){btn.textContent=o;},1500);}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(flash).catch(fallback);}else{fallback();}
+    function fallback(){try{var ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.focus();ta.select();document.execCommand('copy');document.body.removeChild(ta);flash();}catch(e){}}
+  }
+  var cp=document.getElementById('copyM');
+  cp.addEventListener('click',function(){ copyText(document.getElementById('mtext').textContent, cp, 'Скопировано'); });
+
+  var picked=document.getElementById('picked'), speech=document.getElementById('speech');
+  var floatbar=document.getElementById('selbar'), fbCount=document.getElementById('fbCount');
+  var emptyHTML='<span class="empty">Жми нужные нарушения ниже — здесь сам соберётся готовый текст: представление, причина задержания и разъяснение прав. Потом «Копировать речь».</span>';
+  function artName(r){return r.querySelector('.desc').textContent.trim();}
+  function artParts(r){var t=r.querySelector('.code').textContent.trim().split(/\s+/);return {prefix:t[0],num:t.slice(1).join(' ')};}
+  function speechText(sel){
+    var parts=sel.map(function(r){var p=artParts(r);return 'статья '+p.num+' '+p.prefix+' — '+artName(r).toLowerCase();});
+    return 'Гражданин, вы задержаны. Сотрудник МВД, ОМОН, Одесский, жетон 87436. Вам вменяется: '+parts.join('; ')+'.\n\n'+document.getElementById('mtext').textContent;
+  }
+  function rebuild(){
+    var sel=rows.filter(function(r){return r.classList.contains('sel');});
+    picked.innerHTML='';
+    if(!sel.length){ speech.innerHTML=emptyHTML; floatbar.classList.remove('on'); updateFav(); return; }
+    sel.forEach(function(r){
+      var p=artParts(r), chip=document.createElement('span'); chip.className='pchip'; chip.title='Убрать';
+      chip.appendChild(document.createTextNode(p.prefix+' '+p.num));
+      var x=document.createElement('span'); x.className='x'; x.textContent='✕'; chip.appendChild(x);
+      chip.addEventListener('click',function(e){e.stopPropagation();keepScroll(function(){r.classList.remove('sel');rebuild();});});
+      picked.appendChild(chip);
+    });
+    speech.textContent=speechText(sel);
+    fbCount.textContent='В речи: '+sel.length;
+    floatbar.classList.add('on');
+    updateFav();
+  }
+  rows.forEach(function(r){ r.addEventListener('click',function(){ keepScroll(function(){ r.classList.toggle('sel'); rebuild(); }); }); });
+
+  var FAV=[
+    ['УК 17.6','Неповиновение'],['УК 17.3','Оскорбление власти'],['УК 17.2','Насилие к власти'],
+    ['УК 17.8','Помеха задержанию'],['УК 17.7','Отказ от штрафа'],['УК 17.1','Покушение на сотрудника'],
+    ['УК 10.2','Грабёж'],['УК 10.3','Угон ТС'],['УК 10.1','Мошенничество'],['УК 10.4','Порча имущества'],
+    ['УК 6.4','Тяжкий вред'],['УК 6.7','Угроза убийством'],['УК 6.1','Убийство'],['УК 7.1','Похищение'],
+    ['УК 12.8','Оружие'],['УК 13.1','Наркотики'],['УК 12.4','Хулиганство (УК)'],
+    ['КоАП 5.1','Оскорбление'],['КоАП 5.4','Распитие / пьяный'],['КоАП 5.6','Мелкое хулиганство'],['КоАП 5.8','Холодное оружие'],
+    ['КоАП 23.1.4','Пьяный за рулём'],['КоАП 24.5','Скорость 80+'],['КоАП 15.1','Встречка'],['КоАП 11.8','Без документов']
+  ];
+  var favEl=document.getElementById('fav'), favBtns=[];
+  FAV.forEach(function(pair){
+    var r=codeMap[pair[0]]; if(!r) return;
+    var b=document.createElement('button'); b.type='button'; b.className='favbtn'; b._row=r;
+    var lab=document.createElement('span'); lab.textContent=pair[1];
+    var code=document.createElement('b'); code.textContent=pair[0];
+    b.appendChild(lab); b.appendChild(code);
+    b.addEventListener('click',function(){ keepScroll(function(){ r.classList.toggle('sel'); rebuild(); }); });
+    favEl.appendChild(b); favBtns.push(b);
+  });
+  function updateFav(){ favBtns.forEach(function(b){ b.classList.toggle('on', b._row.classList.contains('sel')); }); }
+
+  function curSpeech(){var sel=rows.filter(function(r){return r.classList.contains('sel');});return sel.length?speechText(sel):'';}
+  document.getElementById('copyS').addEventListener('click',function(){var t=curSpeech();if(t)copyText(t,this,'Скопировано');});
+  document.getElementById('fbCopy').addEventListener('click',function(){var t=curSpeech();if(t)copyText(t,this,'Готово');});
+  document.getElementById('fbClear').addEventListener('click',function(){rows.forEach(function(r){r.classList.remove('sel');});rebuild();});
+  document.getElementById('clearS').addEventListener('click',function(){rows.forEach(function(r){r.classList.remove('sel');});rebuild();});
+  rebuild();
+
+  // вкладки: показываем один раздел
+  var nav=document.querySelector('.secnav');
+  var navlinks=[].slice.call(document.querySelectorAll('.secnav a'));
+  var panelIds=['rech','prava','zaderzhanie','sila','zalog','polnom','reglament','statyi'];
+  var panels={}; panelIds.forEach(function(id){panels[id]=document.getElementById(id);});
+  var chipsRow=document.querySelector('.chips');
+  function showPanel(id){
+    if(!panels[id])return;
+    panelIds.forEach(function(k){ if(panels[k]) panels[k].classList.toggle('active', k===id); });
+    navlinks.forEach(function(a){ var on=a.getAttribute('href')==='#'+id; a.classList.toggle('active',on);
+      if(on){ var target=a.offsetLeft-nav.clientWidth/2+a.offsetWidth/2; if(Math.abs(nav.scrollLeft-target)>8) nav.scrollLeft=target; } });
+    if(chipsRow) chipsRow.style.display = (id==='statyi') ? 'flex' : 'none';
+    window.scrollTo(0,0);
+  }
+  navlinks.forEach(function(a){ a.addEventListener('click',function(e){ e.preventDefault(); showPanel(a.getAttribute('href').slice(1)); }); });
+  q.addEventListener('input',function(){ if(q.value.trim() && panels.statyi && !panels.statyi.classList.contains('active')) showPanel('statyi'); });
+  showPanel('rech');
+})();
+</script>
+</body>
+</html>
