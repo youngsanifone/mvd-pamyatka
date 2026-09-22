@@ -202,12 +202,26 @@ footer{color:var(--ink-faint);font-size:12.5px;padding-block:18px 90px;text-alig
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+.brand{position:relative}
+.editop{background:none;border:1px solid var(--line-strong);color:var(--ink-soft);border-radius:6px;width:22px;height:22px;line-height:1;cursor:pointer;font-size:12px;margin-left:6px;padding:0;vertical-align:middle}
+.editop:hover{color:var(--ink);border-color:var(--accent)}
+.opmodal{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;align-items:center;justify-content:center;z-index:80;padding:16px}
+.opmodal.on{display:flex}
+.opmodal .opcard{background:var(--surface);border:1px solid var(--line-strong);border-radius:14px;box-shadow:var(--shadow);max-width:380px;width:100%;padding:20px}
+.opmodal h3{margin:0 0 6px;font-family:"Oswald",sans-serif;letter-spacing:.02em}
+.opmodal p{margin:0 0 14px;color:var(--ink-soft);font-size:13.5px;line-height:1.4}
+.opmodal label{display:block;font-size:12px;color:var(--ink-soft);margin:10px 0 4px}
+.opmodal input,.opmodal select{width:100%;box-sizing:border-box;background:var(--surface-2);border:1px solid var(--line);border-radius:8px;padding:9px 11px;color:var(--ink);font-size:14px}
+.opmodal input:focus,.opmodal select:focus{outline:2px solid var(--accent);outline-offset:1px}
+.opmodal .oprow{display:flex;gap:10px;margin-top:16px}
+.opmodal .oprow .btn{flex:1;text-align:center}
 </style>
 </head>
 <body>
 <div class="searchbar">
   <div class="wrap">
-    <div class="brand"><span class="bt">★ МВД · Арбатский</span><span class="bid">Одесский · 87436 · ОМОН</span></div>
+    <div class="brand"><span class="bt">★ МВД · Арбатский</span><span class="bid"><span class="opname">—</span> · <span class="opbadge">—</span> · <span class="opunit">—</span></span><button type="button" class="editop" id="editOp" title="Изменить мои данные" aria-label="Изменить мои данные">&#9998;</button></div>
     <input id="q" type="search" placeholder="Поиск: 6.1, грабёж, взятка, скорость, оскорбление..." autocomplete="off" aria-label="Поиск по статьям">
     <div class="chips" role="group" aria-label="Фильтр">
       <span class="chip" data-f="all" aria-pressed="true">Все</span>
@@ -400,7 +414,7 @@ html{scroll-behavior:smooth}
   <h3>Ограбления банков и бизнесов</h3>
   <ul class="list">
     <li>Банк/бизнес горит на карте или системное сообщение о грабеже — сразу выезд на код банка.</li>
-    <li><b>Переговорщик:</b> <code>/s Я являюсь переговорщиком</code>, <code>/do На груди жетон: [МВД - 87436 | ОМОН]</code>. Формат жетона: [Структура - Номер | Отдел].</li>
+    <li><b>Переговорщик:</b> <code>/s Я являюсь переговорщиком</code>, <code>/do На груди жетон: [МВД - <span class="opbadge">—</span> | <span class="opunit">—</span>]</code>. Формат жетона: [Структура - Номер | Отдел].</li>
     <li>Попросить показать заложника. <b>Отказ показать — основание для пуша.</b></li>
     <li>В банке допустимо <b>только одно требование — зелёный коридор (ЗК)</b>. Деньги и прочее — недопустимо.</li>
     <li>Отличать просьбу от требования (в просьбе — отказывать).</li>
@@ -409,7 +423,7 @@ html{scroll-behavior:smooth}
   <h3>Похищения</h3>
   <ul class="list">
     <li>Оповещение «Заложники» → взять вызов, <code>/dep: Сотрудник МВД работает по похищению</code>.</li>
-    <li>Переговорщик с жетоном [МВД - 87436 | ОМОН]. Убедиться в числе и состоянии заложников <b>один раз</b>, сделать скрин. Максимум <b>6</b> заложников.</li>
+    <li>Переговорщик с жетоном [МВД - <span class="opbadge">—</span> | <span class="opunit">—</span>]. Убедиться в числе и состоянии заложников <b>один раз</b>, сделать скрин. Максимум <b>6</b> заложников.</li>
     <li><b>Денежный выкуп:</b> обычный игрок — до <b>20 000</b>; лидер/зам фракции — до <b>100 000</b>.</li>
     <li><b>Выкуп предметами</b> (только за лидера/зама, максимальная прочность): МВД/ГИБДД — лидер 75 / зам 50 тяж. бронежилетов; Армия — 8000 / 4000 материалов; Правительство — 700к/300к ₽ или бронежилеты; ФСБ — 75 / 45 бронежилетов; Больница — 350 / 250 эпинефрина.</li>
     <li><b>Зелёный коридор:</b> не более <b>45 сек</b> (отсчёт с выезда похитителей). Время на выполнение — не менее <b>15 мин</b>. Требовать можно только <b>одну</b> часть выкупа.</li>
@@ -423,7 +437,7 @@ html{scroll-behavior:smooth}
     <li>Только служебный транспорт при исполнении. Личные и гражданские авто — запрещены.</li>
     <li>Нарушение — дисциплинарное наказание, меры по КоАП и принудительная эвакуация.</li>
   </ul>
-  <p class="hint">Твоё подразделение: ОМОН. Заявки с 3 ранга, спецмероприятия и усиленные операции, повышение — через отчёты (баллы) и запись в кадровый-аудит.</p>
+  <p class="hint">Твоё подразделение: <span class="opunit">—</span>. Заявки с 3 ранга, спецмероприятия и усиленные операции, повышение — через отчёты (баллы) и запись в кадровый-аудит.</p>
 </section>
 
 <section id="statyi" class="panel">
@@ -557,7 +571,63 @@ html{scroll-behavior:smooth}
 <footer>Внутриигровые формулировки проекта Россия Онлайн. Источники: УК (ФКЗ №2), КоАП (ФКЗ №5), ПК. Не официальный документ фракции.</footer>
 <button class="themebtn" id="themebtn" type="button">Тема</button>
 
+
+<div class="opmodal" id="opModal" role="dialog" aria-modal="true" aria-labelledby="opTitle">
+  <form class="opcard" id="opForm">
+    <h3 id="opTitle">Твои данные</h3>
+    <p>Сайт публичный — эти данные хранятся только в твоём браузере и подставляются в речь задержания и примеры регламентов. Их можно изменить в любой момент кнопкой &#9998; рядом с шапкой.</p>
+    <label for="opName">Имя Фамилия персонажа</label>
+    <input id="opName" type="text" placeholder="Иван Иванов" autocomplete="off" required>
+    <label for="opBadge">Номер жетона / StaticID</label>
+    <input id="opBadge" type="text" placeholder="12345" autocomplete="off" required>
+    <label for="opUnit">Подразделение</label>
+    <input id="opUnit" type="text" list="opUnitList" placeholder="ОМОН" autocomplete="off" required>
+    <datalist id="opUnitList">
+      <option value="ПА (Полицейская академия)">
+      <option value="ППС">
+      <option value="ОМОН">
+      <option value="ГИБДД">
+      <option value="Следствие">
+      <option value="Дежурная часть">
+      <option value="Кинологическая служба">
+    </datalist>
+    <div class="oprow">
+      <button type="button" class="btn" id="opSkip">Пропустить</button>
+      <button type="submit" class="btn">Сохранить</button>
+    </div>
+  </form>
+</div>
+
 <script>
+(function(){
+  var KEY='mvdOperator';
+  function loadOp(){ try{ var raw=localStorage.getItem(KEY); if(raw) return JSON.parse(raw); }catch(e){} return null; }
+  function saveOp(o){ try{ localStorage.setItem(KEY, JSON.stringify(o)); }catch(e){} }
+  var DEFAULT={name:'Сотрудник', badge:'—', unit:'—'};
+  var op = loadOp() || DEFAULT;
+  function renderOp(){
+    [].slice.call(document.querySelectorAll('.opname')).forEach(function(el){ el.textContent = op.name || DEFAULT.name; });
+    [].slice.call(document.querySelectorAll('.opbadge')).forEach(function(el){ el.textContent = op.badge || DEFAULT.badge; });
+    [].slice.call(document.querySelectorAll('.opunit')).forEach(function(el){ el.textContent = op.unit || DEFAULT.unit; });
+  }
+  window.getOperator = function(){ return op; };
+  renderOp();
+  var modal=document.getElementById('opModal'), form=document.getElementById('opForm');
+  var inName=document.getElementById('opName'), inBadge=document.getElementById('opBadge'), inUnit=document.getElementById('opUnit');
+  function openModal(prefill){
+    if(prefill){ inName.value = op.name===DEFAULT.name?'':op.name; inBadge.value = op.badge===DEFAULT.badge?'':op.badge; inUnit.value = op.unit===DEFAULT.unit?'':op.unit; }
+    modal.classList.add('on'); setTimeout(function(){inName.focus();},0);
+  }
+  function closeModal(){ modal.classList.remove('on'); }
+  var editBtn=document.getElementById('editOp'); if(editBtn) editBtn.addEventListener('click', function(){ openModal(true); });
+  var skipBtn=document.getElementById('opSkip'); if(skipBtn) skipBtn.addEventListener('click', function(){ closeModal(); });
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    op = { name: inName.value.trim()||DEFAULT.name, badge: inBadge.value.trim()||DEFAULT.badge, unit: inUnit.value.trim()||DEFAULT.unit };
+    saveOp(op); renderOp(); closeModal();
+  });
+  if(!loadOp()){ openModal(false); }
+})();
 (function(){
   var btn=document.getElementById('themebtn');
   function cur(){var t=document.documentElement.getAttribute('data-theme');return t?t:'dark';}
@@ -653,7 +723,8 @@ html{scroll-behavior:smooth}
   function artParts(r){var t=r.querySelector('.code').textContent.trim().split(/\s+/);return {prefix:t[0],num:t.slice(1).join(' ')};}
   function speechText(sel){
     var parts=sel.map(function(r){var p=artParts(r);return 'статья '+p.num+' '+p.prefix+' — '+artName(r).toLowerCase();});
-    return 'Гражданин, вы задержаны. Сотрудник МВД, ОМОН, Одесский, жетон 87436. Вам вменяется: '+parts.join('; ')+'.\n\n'+document.getElementById('mtext').textContent;
+    var op=(window.getOperator&&window.getOperator())||{name:'Сотрудник',badge:'—',unit:'—'};
+    return 'Гражданин, вы задержаны. Сотрудник МВД, '+op.unit+', '+op.name+', жетон '+op.badge+'. Вам вменяется: '+parts.join('; ')+'.\n\n'+document.getElementById('mtext').textContent;
   }
   var BAIL={1:'25 000',2:'50 000',3:'75 000',4:'100 000',5:'125 000'};
   function renderSummary(sel){
