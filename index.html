@@ -578,7 +578,8 @@ html{scroll-behavior:smooth}
   var chips=[].slice.call(document.querySelectorAll('.chip')), count=document.getElementById('count'), noresult=document.getElementById('noresult');
   var filter='all';
   var codeMap={};
-  rows.forEach(function(r){ r._t=r.textContent.toLowerCase(); r._desc=r.querySelector('.desc'); r._orig=r._desc.innerHTML; codeMap[r.querySelector('.code').textContent.trim()]=r; });
+  function nrm(s){return s.toLowerCase().replace(/ё/g,'е').replace(/й/g,'и');}
+  rows.forEach(function(r){ r._t=nrm(r.textContent); r._desc=r.querySelector('.desc'); r._orig=r._desc.innerHTML; codeMap[r.querySelector('.code').textContent.trim()]=r; });
 
   function esc(s){return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');}
   var results=document.getElementById('results');
@@ -597,8 +598,8 @@ html{scroll-behavior:smooth}
   }
   results.addEventListener('click',function(e){ var it=e.target.closest('.ritem'); if(!it)return; var r=rows[+it.dataset.i]; if(!r)return; keepScroll(function(){ r.classList.toggle('sel'); rebuild(); apply(); }); });
   function apply(){
-    var term=q.value.trim().toLowerCase(), shown=0, active=(term||filter!=='all'), matched=[];
-    var re= term? new RegExp('('+esc(term)+')','ig') : null;
+    var term=nrm(q.value.trim()), shown=0, active=(term||filter!=='all'), matched=[];
+    var re= term? new RegExp('('+esc(term).replace(/е/g,'[её]').replace(/и/g,'[ий]')+')','ig') : null;
     rows.forEach(function(r){
       var okF = filter==='all' || (filter==='uk'&&r.dataset.cat==='uk') || (filter==='koap'&&r.dataset.cat==='koap') || (filter==='road'&&r.dataset.road==='1') || (filter==='heavy'&&(r.dataset.cls==='t'||r.dataset.cls==='ot'));
       var okT = !term || r._t.indexOf(term)>-1;
