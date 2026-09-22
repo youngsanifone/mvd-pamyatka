@@ -161,10 +161,17 @@ ol.steps>li b{color:var(--ink)}
 .leg{font-size:12.5px;color:var(--ink-faint);margin:2px 0 9px;line-height:1.75}
 .leg b{color:var(--ink)}
 .leg .rk{font-family:"Oswald",sans-serif;font-weight:700;font-size:12px}
+.summary{display:none;margin:10px 0 0;padding:10px 13px;border-radius:9px;background:var(--surface-2);border:1px solid var(--line-strong);font-size:14px;line-height:1.6}
+.summary.on{display:block}
+.summary b{color:var(--ink)}
+.summary .warn{color:var(--crit);font-weight:700}
+.summary .ok{color:var(--good);font-weight:700}
+.summary .stx{color:var(--gold);font-weight:700}
+@media (max-width:620px){.stbl th:nth-child(3),.stbl td:nth-child(3){display:none}}
 .tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;margin-top:4px}
 table.stbl{border-collapse:collapse;width:100%;font-size:13.5px}
 .stbl thead th{text-align:left;background:var(--surface-3);font-family:"Oswald",sans-serif;font-weight:600;font-size:11px;letter-spacing:.03em;text-transform:uppercase;color:var(--ink-soft);padding:8px 12px;border-bottom:1px solid var(--line-strong)}
-.stbl td{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:baseline}
+.stbl td{padding:7px 11px;border-bottom:1px solid var(--line);vertical-align:baseline}
 tr.srow{cursor:pointer}
 tr.srow:hover td{background:var(--accent-soft)}
 tr.srow.sel td{background:var(--accent-soft)}
@@ -212,13 +219,13 @@ html{scroll-behavior:smooth}
     </div>
     <nav class="secnav" aria-label="Разделы">
       <a href="#rech">Быстро</a>
+      <a href="#statyi">Статьи</a>
       <a href="#prava">Права</a>
       <a href="#zaderzhanie">Задержание</a>
       <a href="#sila">Сила</a>
       <a href="#zalog">Залог</a>
       <a href="#polnom">Полномочия</a>
       <a href="#reglament">Регламенты</a>
-      <a href="#statyi">Статьи</a>
     </nav>
     <div class="results" id="results" hidden></div>
     <div class="selbar" id="selbar">
@@ -235,6 +242,7 @@ html{scroll-behavior:smooth}
 <section id="rech" class="panel">
   <h2>Быстрое задержание <span class="n">жми нарушения</span></h2>
   <div class="speechtext" id="speech"><span class="empty">Жми нужные нарушения ниже — здесь сам соберётся готовый текст: представление, причина задержания и разъяснение прав. Потом «Копировать речь».</span></div>
+  <div class="summary" id="summary"></div>
   <div class="picked" id="picked"></div>
   <div class="rowbtns">
     <button class="btn primary big" id="copyS" type="button">Копировать речь</button>
@@ -646,10 +654,26 @@ html{scroll-behavior:smooth}
     var parts=sel.map(function(r){var p=artParts(r);return 'статья '+p.num+' '+p.prefix+' — '+artName(r).toLowerCase();});
     return 'Гражданин, вы задержаны. Сотрудник МВД, ОМОН, Одесский, жетон 87436. Вам вменяется: '+parts.join('; ')+'.\n\n'+document.getElementById('mtext').textContent;
   }
+  var BAIL={1:'25 000',2:'50 000',3:'75 000',4:'100 000',5:'125 000'};
+  function renderSummary(sel){
+    var sm=document.getElementById('summary'); if(!sm) return;
+    var maxStar=0, heavy=false, mid=0;
+    sel.forEach(function(r){
+      var el=r.querySelector('.rst'); var tx=el?el.textContent:'';
+      var nums=tx.match(/\d/g); if(nums){ nums.forEach(function(n){ n=+n; if(n>maxStar) maxStar=n; }); }
+      var c=r.dataset.cls||''; if(c==='t'||c==='ot') heavy=true; if(c==='s') mid++;
+    });
+    var sud = heavy || sel.length>=3 || mid>=2;
+    var h='<b>Итого:</b> '+sel.length+' ст.';
+    if(maxStar) h+=' · розыск до <span class="stx">'+maxStar+'★</span>';
+    if(sud){ h+=' · судимость: <span class="warn">да</span> · залог: <span class="warn">нет</span> (ст. 5.17 ч.3)'; }
+    else { h+=' · судимость: <span class="ok">нет</span>'; if(maxStar) h+=' · залог: <b>'+(BAIL[maxStar]||'—')+'</b>'; }
+    sm.innerHTML=h; sm.classList.add('on');
+  }
   function rebuild(){
     var sel=rows.filter(function(r){return r.classList.contains('sel');});
     picked.innerHTML='';
-    if(!sel.length){ speech.innerHTML=emptyHTML; floatbar.classList.remove('on'); updateFav(); return; }
+    if(!sel.length){ speech.innerHTML=emptyHTML; floatbar.classList.remove('on'); var sm0=document.getElementById('summary'); if(sm0) sm0.classList.remove('on'); updateFav(); return; }
     sel.forEach(function(r){
       var p=artParts(r), chip=document.createElement('span'); chip.className='pchip'; chip.title='Убрать';
       chip.appendChild(document.createTextNode(p.prefix+' '+p.num));
@@ -658,6 +682,7 @@ html{scroll-behavior:smooth}
       picked.appendChild(chip);
     });
     speech.textContent=speechText(sel);
+    renderSummary(sel);
     fbCount.textContent='В речи: '+sel.length;
     floatbar.classList.add('on');
     updateFav();
